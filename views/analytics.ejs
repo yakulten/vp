@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= title %></title>
+  <title></title>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <%- css('bootstrap.less') %>
   <%- css('style.less') %>
@@ -12,48 +12,7 @@
 </head>
 <body ng-app="valuepotion" class="vp-app">
   <div class="vp-side">
-    <i class="vp-menu-btn fa fa-bars fa-2x"></i>
-    <div class="vp-menus" ng-controller="MenuController">
-      <ul class="list-unstyled tree">
-        <li>
-          <a href="#" class="tree-title">APPS <i class="pull-right fa fa-caret-right"></i></a>
-          <ul class="list-unstyled">
-            <li>
-              <a class="media tree-title tree-child-title">
-                <img src="https://lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="68" class="pull-left">
-                <span class="media-body" style="display:block;color:#666">
-                  <strong href="#" style="display:block;color:#eee">
-                    METAL SLUG DEFENCE
-                  </strong>
-                  <small style="display:block;margin-bottom:15px;">
-                    SNK PLAY MORE | STRATEGY
-                  </small>
-                  <small style="display:block;line-height:11px">
-                    “METAL SLUG DEFENSE” breaks a new record again
-                  </small>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="list-unstyled tree" ng-repeat="tree in treedata">
-        <li>
-          <a href="#" class="tree-title">
-            <img ng-if="tree.img !== undefined" ng-src="{{tree.img}}" width="17" height="17">
-            {{tree.label}}
-            <i class="pull-right fa fa-caret-right"></i>
-          </a>
-          <ul class="list-unstyled" ng-show="tree.children && tree.children.length > 0">
-            <li ng-repeat="child in tree.children">
-              <a href="#" class="tree-title tree-child-title" ng-class="{active: child.isActive }">
-                {{child.label}}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+    <% include _side.ejs %>
   </div>
   <div class="vp-body">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

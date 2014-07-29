@@ -1,0 +1,1 @@
+angular.module("valuepotion", [ "ngResource", "ngTable", "highcharts-ng" ]);

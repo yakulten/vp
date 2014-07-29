@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <%- css('bootstrap.less') %>
+  <%- css('style.less') %>
+  <style>
+    .ng-table-pager {display:none;}
+  </style>
+  <%- js('application.js') %>
+</head>
+<body ng-app="valuepotion" class="vp-app">
+  <div class="vp-side">
+    <% include _side.ejs %>
+  </div>
+  <div class="vp-body">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand">APPS</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <a href="#"></a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#"><img src="http://media-cache-ec0.pinimg.com/70x/e1/1b/6c/e11b6cc557894fae8aad1a631fe6e5d5.jpg" width="24" height="24" class="img-circle" style="margin:-10px 0 -10px 20px"> Cras sit amet</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-cog fa-lg"><span class="caret"></span></i></a>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div style="position:relative;overflow:hidden;">
+      <div style="position:absolute;background:url(http://cyberfanatix.com/wp-content/uploads/2014/05/metal_slug_defense_11.png) 50% 50% no-repeat;left:-4px;right:-4px;top:-4px;bottom:-4px;background-size:cover;opacity:0.2;-webkit-filter:blur(4px);">
+      </div>
+      <div class="container-fluid card" style="position:relative;margin-top:200px">
+        <div class="row page-header">
+          <div class="col-md-6">
+            <h4>METAL SLUG DEFENSE - SNK PLAYMORE <br/><small>com.snkplaymore.android003</small></h4>
+          </div>
+          <div class="col-md-6">
+            <div class="pull-right" style="margin-top:5px;">
+              <button class="btn btn-default">DEVELOPER CONSOLE</button>
+              <button class="btn btn-default">EDIT</button>
+              <button class="btn btn-default btn-danger">DELETE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;padding:15px 10px;background-image: -webkit-linear-gradient(top, rgba(252,253,255,0.8) 0, rgba(252,253,255,1) 100%);background-image: linear-gradient(to bottom, rgba(252,253,255,0.6) 0, rgba(252,253,255,1) 100%);">
+        <div class="media">
+          <img ng-src="https://lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="100" class="pull-left">
+          <div class="media-body">
+            <strong class="h4" style="display:block;margin:0 0 10px;">GOOGLE PLAY <small> - 2014.07.21</small></strong>
+            <p class="small">
+              APP URL: <a href="#">https://play.google.com/store/apps/details?id=com.snkplaymore.android003</a><br/>
+              HORIZONTAL | STRATEGY | KRW | ASIA/SEOUL
+            </p>
+            <p class="small">
+              CLIENT ID: aedfe5493c2dd27cd6ee660f2b313d5f<br/>
+              SECRET KEY: 1abe403ac1585071
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid card">
+      <ul class="nav nav-tabs nav-justified" style="margin:10px 0;">
+        <li class="active">
+          <a href="#locations" data-toggle="tab" >LOCATIONS</a>
+        </li>
+        <li>
+          <a href="#events" data-toggle="tab">EVENTS</a>
+        </li>
+        <li>
+          <a href="#versions" data-toggle="tab">VERSIONS</a>
+        </li>
+        <li>
+          <a href="#rewards" data-toggle="tab">REWARDS</a>
+        </li>
+        <li>
+          <a href="#purchases" data-toggle="tab">PURCHASES</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active">
+          <table class="table table-hover" ng-table>
+            <tbody>
+              <tr ng-repeat="item in [1,2,3,4,5,6,7,8,9,10]">
+                <td data-title="'LOCATION'" sortable="'temp'">
+                  lobby
+                </td>
+                <td data-title="'DESCRIPTION'" sortable="'temp'">
+                  first location in game
+                </td>
+                <td data-title="'EXTERNAL CAMPAIGNS'" sortable="'temp'">
+                  Internal Cross Promotion
+                </td>
+                <td data-title="'MANAGEMENT'" width="100">
+                  <button class="btn btn-default">ON</button>
+                  <button class="btn btn-default"><i class="fa fa-pencil"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid card">
+      <div class="row page-header">
+        <div class="col-md-8">
+          <h4>SDK DOWNLOAD</h4>
+          <p>With simple SDK integration, you can increase your game users.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right" style="margin-top:15px;">
+            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-android"></i> ANDROID</a>
+            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-apple"></i> iOS</a>
+            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-codepen"></i> UNITY</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

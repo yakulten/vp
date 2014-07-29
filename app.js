@@ -19,7 +19,7 @@ var connectMincer = new ConnectMincer({
     'public/stylesheets',
     'public/javascripts',
     'public/bower_components',
-    'public/bower_components/strapless/less'
+    'public/less'
   ]
 });
 

@@ -21,6 +21,12 @@
     "angular-strap": "~2.0.4",
     "angularjs": "~1.2.20",
     "jquery": "~2.1.1",
-    "strapless": "~3.1.1"
+    "strapless": "~3.1.1",
+    "ng-table": "~0.3.3",
+    "underscore": "~1.6.0",
+    "highcharts-ng": "~0.0.6",
+    "highcharts": "~4.0.3",
+    "moment": "~2.7.0",
+    "angular-resource": "~1.2.21"
   }
 }

@@ -25,3 +25,4 @@ build/Release
 node_modules
 bin
 public/bower_components
+.DS_Store
