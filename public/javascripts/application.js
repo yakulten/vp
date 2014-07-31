@@ -5,8 +5,11 @@
 //= require highcharts-ng/dist/highcharts-ng
 //= require ng-table/ng-table
 //= require angular.treeview/angular.treeview
+//= require angular-ui-calendar
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
+//= require fullcalendar/fullcalendar
+//= require fullcalendar/gcal
 //= require moment
 //= require underscore
 //= require valuepotion

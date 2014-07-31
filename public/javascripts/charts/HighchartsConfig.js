@@ -2,6 +2,7 @@
   Highcharts.setOptions({
     chart: {
       marginTop: 36,
+      backgroundColor: "transparent",
       style: {
         fontFamily: "inherit"
       }

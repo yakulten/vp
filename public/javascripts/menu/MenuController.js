@@ -3,6 +3,7 @@
     $scope.treedata = [
       {
         label: "ANALYTICS",
+        href: "/analytics",
         icon: "signal",
         children: [
           { label: "OVERVIEW", isActive: true },
@@ -13,6 +14,7 @@
         ]
       }, {
         label: "MARKETING",
+        href: "/campaigns",
         icon: "bullhorn",
         children: [
           { label: "IN APP MARKETING" },

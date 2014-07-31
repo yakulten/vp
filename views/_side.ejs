@@ -30,7 +30,7 @@
   </ul>
   <ul class="list-unstyled tree" ng-repeat="tree in treedata">
     <li>
-      <a href="#" class="tree-title">
+      <a ng-href="{{tree.href}}" class="tree-title">
         <img ng-if="tree.img !== undefined" ng-src="{{tree.img}}" width="17" height="17">
         {{tree.label}}
         <i class="pull-right fa fa-caret-right"></i>

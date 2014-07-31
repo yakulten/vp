@@ -1,1 +1,1 @@
-angular.module("valuepotion", [ "ngResource", "ngTable", "highcharts-ng" ]);
+angular.module("valuepotion", [ "ngResource", "ngTable", "highcharts-ng", "ui.calendar" ]);

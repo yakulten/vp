@@ -4,6 +4,11 @@
 @import "ng-table.less";
 
 @transition: all .33s cubic-bezier(.694, .0482, .335, 1);
+@transitionWidth: width .33s cubic-bezier(.694, .0482, .335, 1);
+
+body {
+  overflow-x:hidden;
+}
 
 .card {
   display:block;
@@ -15,9 +20,10 @@
     position: fixed;
     top:0;
     bottom:0;
-    width: 252px;
+    width: 37px;
     background-color: lighten(@navbar-inverse-bg, 10%);
     z-index:1;
+    .transition(@transitionWidth);
 
     .vp-menu-btn {
       position:absolute;
@@ -27,21 +33,29 @@
       .transition(@transition);
     }
 
-    &:hover .vp-menu-btn {
-      opacity: 0;
-    }
-
     .vp-menus {
+      position: relative;
+      left: -252px;
+      width: 252px;
       opacity: 0;
       .transition(@transition);
     }
-    &:hover .vp-menus {
-      opacity: 1;
+
+    &:hover {
+      width: 252px;
+      .vp-menu-btn {
+        opacity: 0;
+      }
+      .vp-menus {
+        left: 0px;
+        opacity: 1;
+      }
     }
   }
   .vp-body {
     position:relative;
     left:0;
+    min-height:853px;
     border-top: 1px solid @brand-primary;
     margin-top: 51px;
     margin-left: 37px;
@@ -107,5 +121,23 @@
   }
   &:last-child {
     border-bottom: 0;
+  }
+}
+
+// override full calendar
+.fc-header {
+   margin: (@line-height-computed * 2) 0 @line-height-computed;
+}
+.fc-button {
+  height:auto;
+  line-height:auto;
+}
+.fc-text-arrow {
+  font-size:.9em;
+}
+.fc-header-title h2 {
+  font-size:@font-size-h4;
+  &:before {
+    content: "SCHEDULES on ";
   }
 }

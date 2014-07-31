@@ -47,25 +47,26 @@
         </div>
         <div class="col-md-6">
           <form class="form-horizontal row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label class="col-sm-6 control-label text-muted">Reporting on:</label>
-                <div class="col-sm-6">
-                  <select class="form-control">
-                    <option>Location</option>
-                  </select>
-                </div>
-              </div>
+            <div class="col-sm-3 text-right col-sm-offset-2">
+              <label class="control-label text-muted">Reporting on:</label>
             </div>
-            <div class="col-xs-3">
+            <div class="col-sm-3">
               <select class="form-control">
-                <option>City</option>
+                <option>Week</option>
+                <option>Month</option>
+                <option>Day</option>
+                <option>Duration</option>
               </select>
             </div>
-            <div class="col-xs-3">
+            <div class="col-sm-3">
               <select class="form-control">
-                <option>Location</option>
+                <option>All user</option>
               </select>
+            </div>
+            <div class="col-sm-1">
+              <button class="btn btn-default">
+                <i class="fa fa-download"></i>
+              </button>
             </div>
           </form>
         </div>
@@ -78,12 +79,16 @@
         </div>
         <div class="col-md-6">
           <form class="form-horizontal row">
-            <div class="col-xs-6 col-xs-offset-6">
+            <div class="col-sm-3 col-sm-offset-6">
               <select class="form-control">
-                <option>Top 10 Countries</option>
+                <option>Country</option>
               </select>
             </div>
-          </form>
+            <div class="col-sm-3">
+              <select class="form-control">
+                <option>City</option>
+              </select>
+            </div>
         </div>
       </div>
       <div class="container" style="position:relative;">

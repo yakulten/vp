@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <%- css('bootstrap.less') %>
-  <%- css('style.less') %>
-  <style>
-    .ng-table-pager {display:none;}
-  </style>
-  <%- js('application.js') %>
+  <% include _head.ejs %>
 </head>
 <body ng-app="valuepotion" class="vp-app">
   <div class="vp-side">
@@ -72,11 +65,11 @@
         <tbody>
           <tr ng-repeat="item in $data">
             <td data-title="'NAME'" sortable="'name'">
-              <a href="#">
+              <a href="/app">
                 <img ng-src="{{item.img_url}}" width="30" height="30">
               </a>
               &nbsp;
-              <a href="#">
+              <a href="/app">
                 {{item.name}}
               </a>
             </td>
@@ -99,7 +92,7 @@
             <td colspan="4">
             </td>
             <td>
-              <a class="btn btn-success btn-lg">CREATE APP</a>
+              <a class="btn btn-default">CREATE APP</a>
             </td>
           </tr>
         </tfoot>
