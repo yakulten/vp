@@ -16,7 +16,10 @@
       align: "left",
       floating: true,
       x: -8,
-      y: -8
+      y: -8,
+      itemStyle: {
+        fontWeight: "normal"
+      }
     },
     plotOptions: {
       column: {
@@ -30,10 +33,21 @@
           lineWidth: 2,
           lineColor: null
         }
+      },
+      pie: {
+        borderWidth: 0,
+        innerSize: 144,
+        size: 150,
+        showInLegend: true,
+        dataLabels: {
+          softConnector: false
+        }
       }
     },
     xAxis: {
       tickmarkPlacement: "on",
+      lineColor: "#e1ebed",
+      tickWidth: 0,
       labels: {
         staggerLines: 1
       },

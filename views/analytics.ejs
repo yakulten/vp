@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <%- css('bootstrap.less') %>
-  <%- css('style.less') %>
-  <style>
-    .ng-table-pager {display:none;}
-  </style>
-  <%- js('application.js') %>
+    <% include _head.ejs %>
 </head>
 <body ng-app="valuepotion" class="vp-app">
   <div class="vp-side">
@@ -31,7 +24,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="#"><img src="http://media-cache-ec0.pinimg.com/70x/e1/1b/6c/e11b6cc557894fae8aad1a631fe6e5d5.jpg" width="32" height="32" class="img-circle" style="margin:-10px 0 -10px 20px"> Cras sit amet</a>
+              <a href="#"><img src="//media-cache-ec0.pinimg.com/70x/e1/1b/6c/e11b6cc557894fae8aad1a631fe6e5d5.jpg" width="32" height="32" class="img-circle" style="margin:-10px 0 -10px 20px"> Cras sit amet</a>
             </li>
             <li>
               <a href="#"><i class="fa fa-cog fa-lg"><span class="caret"></span></i></a>
@@ -91,12 +84,17 @@
             </div>
         </div>
       </div>
+      <google-map center="map.center" zoom="map.zoom" options="map.options" draggable="true">
+        <markers models="map.markers" coords="'self'" icon="'icon'" fit="true">
+      </google-map>
+      <!--
       <div class="container" style="position:relative;">
         <img src="/public/images/dotted-worldmap.png" width="100%">
         <a ng-repeat="item in items" href="#" class="pin" style="position:absolute;top:{{item.location.y}}%;left:{{item.location.x}}%">
           <img src="/public/images/pin.png" width="20" height="26" style="margin: -20px 0 0 -10px">
-        </a>
+         </a>
       </div>
+      -->
       <div class="row">
         <div class="col-md-9">
           <table class="table" ng-table="tableParams">
@@ -172,7 +170,7 @@
           }
         ],
         xAxis: {
-          tickInterval: 4
+          type: "datetime"
         },
         "yAxis": [
           { },
@@ -182,7 +180,6 @@
           }
         ]
       };
-
     %>
     <div class="container-fluid card" ng-controller="ChartsController" data-url="/public/json/dau.json" data-config='<%= JSON.stringify(config) %>'>
       <div class="row page-header">
@@ -252,7 +249,7 @@
           }
         },
         xAxis: {
-          tickInterval: 4
+          type: "datetime"
         }
       };
 
@@ -325,7 +322,7 @@
           }
         },
         xAxis: {
-          tickInterval: 2
+          type: "datetime"
         }
       };
     %>
@@ -347,7 +344,7 @@
           }
         ],
         xAxis: {
-          tickInterval: 2
+          type: "datetime"
         },
         "yAxis": [
           { },
@@ -424,7 +421,7 @@
           }
         },
         xAxis: {
-          tickInterval: 2
+          type: "datetime"
         }
       };
     %>

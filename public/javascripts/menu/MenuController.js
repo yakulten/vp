@@ -9,7 +9,7 @@
           { label: "OVERVIEW", isActive: true },
           { label: "REAL-TIME ACTIVITY" },
           { label: "MONETIZATION" },
-          { label: "AUDIENCE" },
+          { label: "AUDIENCE", href: "/audience" },
           { label: "ACTIVITY" }
         ]
       }, {

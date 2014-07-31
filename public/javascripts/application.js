@@ -1,6 +1,8 @@
 //= require jquery
 //= require angularjs
 //= require angular-resource
+//= require lodash/dist/lodash.underscore
+//= require angular-google-maps/dist/angular-google-maps
 //= require angular-strap/dist/angular-strap
 //= require highcharts-ng/dist/highcharts-ng
 //= require ng-table/ng-table
