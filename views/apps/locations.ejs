@@ -1,0 +1,71 @@
+<%
+  var config = {
+    options: {
+      chart: {
+        type: "bar",
+        height: 250
+      },
+      plotOptions: {
+        bar: {
+          colorByPoint: true
+        }
+      },
+      legend: {
+        enabled: false
+      }
+    },
+    xAxis: {
+      categories: [ "lobby1", "lobby2", "lobby3", "lobby4", "lobby5", "lobby6" ]
+    },
+    series: [{
+      name: "locations",
+      data: [
+        _.random(500, 1000),
+        _.random(500, 1000),
+        _.random(500, 1000),
+        _.random(500, 1000),
+        _.random(500, 1000),
+        _.random(500, 1000)
+      ]
+    }]
+  };
+%>
+<div class="container-fluid card" ng-controller="ChartsController" data-config="<%= JSON.stringify(config) %>">
+  <div class="page-header">
+    <h3 class="h4">LOCATIONS <a href="#locationsInfo" data-toggle="collapse"><i class="fa fa-info-circle"></i></a></h3>
+    <div id="locationsInfo" class="collapse">
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+    </div>
+  </div>
+  <table class="table table-hover" ng-table>
+    <tbody>
+      <tr ng-repeat="item in [1,2,3,4,5]">
+        <td data-title="'LOCATION'" sortable="'temp'">
+          lobby{{$index + 1}}
+        </td>
+        <td data-title="'DESCRIPTION'" sortable="'temp'">
+          first location in game
+        </td>
+        <td data-title="'EXTERNAL CAMPAIGNS'" sortable="'temp'">
+          Internal Cross Promotion
+        </td>
+        <td data-title="'MANAGEMENT'" width="100">
+          <button class="btn btn-default">ON</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <button class="btn btn-default">CREATE</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <highchart config="config"></highchart>
+</div>
+<div ui-view></div>
+<a ui-sref="state1">state1</a>
+<a ui-sref="state2">state2</a>

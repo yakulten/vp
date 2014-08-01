@@ -1,0 +1,80 @@
+<div class="container-fluid card" ng-controller="AppsController">
+  <div class="row page-header">
+    <div class="col-md-6">
+      <h3 class="h4">CRAS SIT AMET's APPS</h3>
+    </div>
+    <div class="col-md-6">
+      <form class="form-horizontal row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="col-sm-6 control-label text-muted">Filtered by:</label>
+            <div class="col-sm-6">
+              <select class="form-control">
+                <option>Platform</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <select class="form-control">
+            <option>Genre</option>
+          </select>
+        </div>
+        <div class="col-xs-3">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+    </div>
+  </div>
+  <table class="table table-hover" ng-table="tableParams">
+    <tbody>
+      <tr ng-repeat="item in $data">
+        <td data-title="'NAME'" sortable="'name'">
+          <a href="/app">
+            <img ng-src="{{item.img_url}}" width="30" height="30">
+          </a>
+          &nbsp;
+          <a href="/app">
+            {{item.name}}
+          </a>
+        </td>
+        <td data-title="'GENRE'" sortable="'genre_description'">
+          {{item.genre_description}}
+        </td>
+        <td data-title="'REGISTRATION'" sortable="'status_id'" width="150">
+          {{item.status_id == 1 ? "Completed" : "Incompleted"}}
+        </td>
+        <td data-title="'PUSH STATE'" sortable="'is_push_ready'" width="150">
+          {{item.is_push_ready ? "Active" : "Inactive"}}
+        </td>
+        <td data-title="'REPORT'" width="119">
+          <button class="btn btn-default"><i class="fa fa-bar-chart-o"></i></button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+        </td>
+        <td>
+          <a class="btn btn-default">CREATE APP</a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<div class="container-fluid card">
+  <div class="row page-header">
+    <div class="col-md-8">
+      <h4>SDK DOWNLOAD</h4>
+      <p>With simple SDK integration, you can increase your game users.</p>
+    </div>
+    <div class="col-md-4">
+      <div class="pull-right" style="margin-top:15px;">
+        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-android"></i> ANDROID</a>
+        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-apple"></i> iOS</a>
+        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-codepen"></i> UNITY</a>
+      </div>
+    </div>
+  </div>
+</div>

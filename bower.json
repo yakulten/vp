@@ -29,6 +29,7 @@
     "moment": "~2.7.0",
     "angular-resource": "~1.2.21",
     "angular-ui-calendar": "~0.8.1",
-    "angular-google-maps": "~1.2.0"
+    "angular-google-maps": "~1.2.0",
+    "angular-ui-router": "~0.2.10"
   }
 }

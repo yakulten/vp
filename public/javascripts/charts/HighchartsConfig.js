@@ -8,6 +8,7 @@
       }
     },
     colors: [ "#fb7767", "#f93631", "#fb9c92", "#2a2a33", "#adbdc4", "#e1ebed" ],
+    // colors: [ "#009bdf", "#0076c6", "#76c1f4", "#2a2a33", "#adbdc4", "#e1ebed" ],
     title: {
       text: ""
     },
@@ -25,6 +26,11 @@
       column: {
         pointWidth: 5,
         borderRadius: 2.5,
+        borderWidth: 0
+      },
+      bar: {
+        pointWidth: 10,
+        borderRadius: 5,
         borderWidth: 0
       },
       line: {

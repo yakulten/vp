@@ -1,0 +1,101 @@
+<div class="container-fluid card">
+  <div class="page-header row">
+    <div class="col-md-6">
+      <h4>OVERVIEW</h4>
+    </div>
+    <div class="col-md-6">
+      <form class="form-inline pull-right">
+        <select class="form-control">
+          <option>All</option>
+          <option>In App Marketing</option>
+          <option>Cross Promotion</option>
+          <option>Network Promotion</option>
+        </select>
+      </form>
+    </div>
+  </div>
+</div>
+<div ng-controller="CampaignsController" ng-cloak>
+  <div class="container-fluid">
+    <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="calendar" style="margin-bottom:30px;"></div>
+  </div>
+  <div class="container-fluid card">
+    <div class="page-header row">
+      <div class="col-md-3">
+        <h4>CAMPAIGNS</h4>
+      </div>
+      <div class="col-md-9">
+        <form class="form-horizontal row">
+          <div class="col-sm-2">
+            <div class="form-group text-right">
+              <label class="control-label text-muted">Filtered by:</label>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <select class="form-control">
+              <option>App Name</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+            <select class="form-control">
+              <option>Campaign Type</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+            <select class="form-control">
+              <option>Status</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+            <select class="form-control">
+              <option>Schedule</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+            <div class="has-feedback">
+              <input type="text" class="form-control">
+              <i class="fa fa-search form-control-feedback"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <table class="table table-hover" ng-table>
+      <tbody>
+        <tr ng-repeat="item in items">
+          <td data-title="'APP NAME'" sortable="'temp'">
+            <a href="/app">
+              <img ng-src="{{item.app_img_url}}" width="30" height="30">
+            </a>
+            &nbsp;
+            <a href="/app">
+              {{item.app_name}}
+            </a>
+          </td>
+          <td data-title="'CAMPAIGN TYPE'" sortable="'temp'">
+            {{item.campaigntype_name}}
+          </td>
+          <td data-title="'CAMPAIGN NAME'" sortable="'temp'">
+            <a href="#">{{item.title}}</a>
+          </td>
+          <td data-title="'STATUS'" sortable="'temp'">
+            {{item.status}}
+          </td>
+          <td data-title="'SCHEDULE'" sortable="'temp'">
+            {{ item.start | date:"yyyy.MM.dd" }} {{ item.end ? " ~ " : "" }} {{ item.end | date:"yyyy.MM.dd" }}
+          </td>
+          <td data-title="'REPORT'" sortable="'temp'" width="100">
+            <button class="btn btn-default"><i class="fa fa-bar-chart-o"></i></button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <button class="btn btn-default">CREATE CAMPAIGN</button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

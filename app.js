@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var ConnectMincer = require("connect-mincer");
+var expressLayouts = require("express-ejs-layouts");
+var _ = require("underscore");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -26,6 +28,7 @@ var connectMincer = new ConnectMincer({
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('layout', "layout/default");
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -38,6 +41,19 @@ app.use(connectMincer.assets());
 app.use("/assets", connectMincer.createServer());
 app.use("/public", express.static(__dirname + "/public"));
 
+// view layout engine setup
+app.use(expressLayouts);
+
+// locals setup for view template
+
+app.use(function(req, res, next){
+  res.locals._ = _;
+  res.locals.breadcrumbs = [];
+  res.locals.path = [];
+  next();
+});
+
+
 app.use('/', routes);
 app.use('/users', users);
 
@@ -47,6 +63,7 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
+
 
 /// error handlers
 
