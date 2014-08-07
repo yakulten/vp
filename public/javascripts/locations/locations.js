@@ -95,5 +95,5 @@
     });
 
   };
-  angular.module("valuepotion").controller("LocationsController", LocationsController);
+  angular.module("vp").controller("LocationsController", LocationsController);
 }();

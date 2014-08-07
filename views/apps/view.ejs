@@ -1,55 +1,117 @@
-<div style="position:relative;overflow:hidden;">
-  <div style="position:absolute;background:url(//img.phombo.com/img1/photocombo/3160/SNK_Playmore_wallpapers_Vol.2_1600x1200-47.jpg_garou-ba2_01_1600.jpg) 50% 0% no-repeat;left:-4px;right:-4px;top:-4px;bottom:-4px;background-size:cover;opacity:0.2;-webkit-filter:blur(4px);">
-  </div>
-  <div class="container-fluid card" style="position:relative;margin-top:200px">
-    <div class="row page-header">
-      <div class="col-md-6">
-        <h4>METAL SLUG DEFENSE - SNK PLAYMORE <br/><small>com.snkplaymore.android003</small></h4>
-      </div>
-      <div class="col-md-6">
-        <div class="pull-right" style="margin-top:5px;">
+<div class="app">
+  <div class="app-bg" style="background-image:url(/public/images/background.jpg);"></div>
+  <div class="app-content">
+    <div class="container-fluid card">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="media">
+            <img src="//lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="150" class="pull-left img-rounded">
+            <div class="media-body">
+              <dl>
+                <dt class="hide">PLATFORM</dt>
+                <dd class="h4" style="margin:5px 0">GOOGLE PLAY <small> - 2014.07.21</small></dd>
+                <dt class="hide">NAME</dt>
+                <dd>
+                  <a class="h3" style="display:block;margin-top:0" href="//play.google.com/store/apps/details?id=com.snkplaymore.android003"><strong>METAL SLUG DEFENSE - SNK PLAYMORE</strong> <i class="fa fa-external-link-square"></i></a>
+                </dd>
+                <dt class="hide">ORIENTATION</dt>
+                <dd>HORIZONTAL</dd>
+                <dt class="hide">GENRE</dt>
+                <dd>STRATEGY</dd>
+                <dt class="hide">CURRENCY</dt>
+                <dd>KRW</dd>
+                <dt class="hide">TIMEZONE</dt>
+                <dd>ASIA/SEOUL</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 text-right" style="margin-top:21px">
           <button class="btn btn-default">DEVELOPER CONSOLE</button>
           <button class="btn btn-default">EDIT</button>
           <button class="btn btn-default btn-danger">DELETE</button>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container-fluid" style="position:relative;padding:15px 10px;background-image: -webkit-linear-gradient(top, rgba(252,253,255,0.8) 0, rgba(252,253,255,1) 100%);background-image: linear-gradient(to bottom, rgba(252,253,255,0.6) 0, rgba(252,253,255,1) 100%);">
-    <div class="media">
-      <img ng-src="//lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="100" class="pull-left">
-      <div class="media-body">
-        <strong class="h4" style="display:block;margin:0 0 10px;">GOOGLE PLAY <small> - 2014.07.21</small></strong>
-        <p class="small">
-          APP URL: <a href="#">//play.google.com/store/apps/details?id=com.snkplaymore.android003</a><br/>
-          HORIZONTAL | STRATEGY | KRW | ASIA/SEOUL
-        </p>
-        <p class="small">
-          CLIENT ID: aedfe5493c2dd27cd6ee660f2b313d5f<br/>
-          SECRET KEY: 1abe403ac1585071
-        </p>
-      </div>
+      <dl>
+        <hr>
+        <dt>CLIENT ID</dt>
+        <dd>aedfe5493c2dd27cd6ee660f2b313d5f</dd>
+        <hr>
+        <dt>SECRET KEY</dt>
+        <dd>1abe403ac1585071</dd>
+      </dl>
     </div>
   </div>
 </div>
 <div class="container-fluid card">
-  <ul class="nav nav-tabs nav-justified" style="margin:10px 0;">
-    <li class="active">
-      <a href="/apps/1/locations">LOCATIONS</a>
-    </li>
-    <li>
-      <a href="/apps/1/events">EVENTS</a>
-    </li>
-    <li>
-      <a href="/apps/1/versions">VERSIONS</a>
-    </li>
-    <li>
-      <a href="/apps/1/rewards">REWARDS</a>
-    </li>
-    <li>
-      <a href="/apps/1/purchases">PURCHASES</a>
-    </li>
-  </ul>
+  <div class="page-header">
+    <h4>SETTINGS</h4>
+  </div>
+  <table class="table table-bordered">
+    <colgroup>
+      <col width="16.666666%">
+      <col width="16.666666%">
+      <col width="16.666666%">
+      <col width="16.666666%">
+      <col width="16.666666%">
+      <col width="16.666666%">
+    </colgroup>
+    <tbody>
+      <tr>
+        <%
+          var settings = [ {
+            name: "LOCATIONS",
+            description: "",
+            icon: "map-marker",
+            value: Math.floor(Math.random() * 200 + 100)
+          }, {
+            name: "EVENTS",
+            description: "",
+            icon: "gift",
+            value: Math.floor(Math.random() * 200) + " / " + Math.floor(Math.random() * 200 + 100)
+          }, {
+            name: "VERSIONS",
+            description: "LATEST",
+            icon: "slack",
+            value: "1.0a"
+          }, {
+            name: "REWARDS",
+            description: "",
+            icon: "money",
+            value: Math.floor(Math.random() * 200 + 100) + "W"
+          }, {
+            name: "IN APP PURCHASES",
+            description: "",
+            icon: "credit-card",
+            value: Math.floor(Math.random() * 2000000 + 100)
+          }, {
+            name: "COHORTS",
+            description: "",
+            icon: "users",
+            value: Math.floor(Math.random() * 5)
+          } ];
+
+          for(var i = 0; i < settings.length; i++){
+            var setting = settings[i]
+        %>
+        <td>
+          <a href="/apps/1/locations" class="media" style="display:block;color:#1f2228">
+            <span class="pull-left">
+              <i class="fa fa-<%= setting.icon %> fa-2x fa-border"></i>
+            </span>
+            <span class="media-body">
+              <span style="display:block;line-height:1.2em"><%= setting.name %></span>
+              <span><%= setting.description %></span>
+            </span>
+          </a>
+          <a href="/apps/1/locations" style="font-size:2.5em;line-height:1.3em;font-weight:100;color:#1f2228">
+            <%= setting.value %>
+          </a>
+        </td>
+        <% } %>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <div class="container-fluid card">
   <div class="row page-header">

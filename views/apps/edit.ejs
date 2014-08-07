@@ -1,0 +1,107 @@
+<form rule="form" name="form" class="app" ng-controller="AppFormController" ng-cloak>
+  <div class="app-bg" style="background-image:url({{bg}})"></div>
+  <button class="btn btn-default bg-btn" ng-click="openBgModal();"><i class="fa fa-5x fa-image text-muted"></i></button>
+  <div class="app-content">
+    <div class="container-fluid card">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <label>PLATFORM *</label>
+          <div class="form-group">
+            <label class="radio-inline">
+              <input type="radio" name="app_store" checked>
+              GOOGLE PLAY
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="app_store">
+              APPLE APP STORE
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="app_store">
+              T STORE
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="app_store">
+              NAVER N STORE
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid card">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <label>APP</label>
+          <div class="form-group">
+            <button class="btn btn-default btn-lg thumb-btn" ng-model="bg" style="background-image:url({{app.img_url}})"><i class="fa fa-2x fa-image text-muted"></i></button>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input ng-model="app" typeahead="app as app.name for app in apps | filter:$viewValue | limitTo:8" type="text" class="form-control" placeholder="APP NAME *" required>
+              <span class="input-group-btn">
+                <button class="btn btn-default"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+            <p class="help-block">If your app is not released, or there's no search results, input your app name only.</p>
+          </div>
+          <div class="form-group">
+            <input ng-model="app.market_app_id" type="text" class="form-control" placeholder="APP ID *" required>
+          </div>
+          <div class="form-group">
+            <input ng-model="app.url" type="text" class="form-control" placeholder="APP URL *" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid card">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <label>ADDITIVES</label>
+          <div class="form-group">
+            <label class="checkbox-inline">
+              <input type="checkbox" name="orientation" checked>
+              LANDSCAPE
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="orientation">
+              PORTRAIT
+            </label>
+          </div>
+          <div class="form-group">
+            <select ng-model="genre" ng-options="genre.id as genre.description for genre in genres" class="form-control" required>
+              <option value="">GENRE *</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select ui-select2 ng-model="currency" data-placeholder="CURRENCY *" class="form-control" required>
+              <option value=""></option>
+              <option ng-repeat="currency in currencies" value="{{currency.iso_code}}">({{currency.iso_code}}) {{currency.name}}</option>
+            </select>
+            <p class="help-block">Choose your standard currency. Revenue is calculated after conversion to standard currency.</p>
+          </div>
+          <div class="form-group">
+            <select ui-select2 ng-model="timezone" data-placeholder="TIMEZONE *" class="form-control" required>
+              <option value=""></option>
+              <optgroup ng-repeat="(label, timezones) in timezoneGroup" label="{{label}}">
+                <option ng-repeat="timezone in timezones" value="{{timezone.value}}">{{timezone.value}} {{timezone.offset}}</option>
+              </optgroup>
+            </select>
+            <p class="help-block">Choose timezone. You cannot change this info after setting.</p>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="PUSH API KEY">
+            <p class="help-block">To send push messages, GCM API Key issued by Google is required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-large btn-block">SAVE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

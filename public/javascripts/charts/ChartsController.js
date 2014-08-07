@@ -8,5 +8,5 @@
     }
   };
 
-  angular.module("valuepotion").controller("ChartsController", ChartsController);
+  angular.module("vp").controller("ChartsController", ChartsController);
 }();

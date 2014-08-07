@@ -1,1 +1,1 @@
-angular.module("valuepotion", [ "ngResource", "ngTable", "highcharts-ng", "ui.router", "ui.calendar", "google-maps" ]);
+angular.module("vp", [ "ngResource", "ngTable", "highcharts-ng", "ui.router", "ui.calendar", "ui.bootstrap", "ui.select2", "google-maps" ]);

@@ -9,7 +9,7 @@
           { label: "OVERVIEW", isActive: true },
           { label: "REAL-TIME ACTIVITY" },
           { label: "MONETIZATION" },
-          { label: "AUDIENCE", href: "/audience" },
+          { label: "AUDIENCE", href: "/analytics/audience" },
           { label: "ACTIVITY" }
         ]
       }, {
@@ -25,5 +25,5 @@
     ];
   };
 
-  angular.module("valuepotion").controller("MenuController", MenuController);
+  angular.module("vp").controller("MenuController", MenuController);
 }();

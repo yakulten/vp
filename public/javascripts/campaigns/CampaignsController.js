@@ -1,8 +1,8 @@
 ! function() {
-  angular.module("valuepotion").factory("Campaigns", function($resource) {
+  angular.module("vp").factory("Campaigns", function($resource) {
     return $resource("/public/json/campaigns.json");
   });
-  angular.module("valuepotion").controller("CampaignsController", function($scope, Campaigns) {
+  angular.module("vp").controller("CampaignsController", function($scope, Campaigns) {
     $scope.uiConfig = {
       calendar: {
         height: 450,

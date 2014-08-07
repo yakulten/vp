@@ -29,12 +29,15 @@
   <table class="table table-hover" ng-table="tableParams">
     <tbody>
       <tr ng-repeat="item in $data">
+        <td width="2em">
+          <input type="radio" name="checked" ng-init="item.isChecked = $index == 0" ng-checked="item.isChecked">
+        </td>
         <td data-title="'NAME'" sortable="'name'">
-          <a href="/app">
+          <a href="/apps/1">
             <img ng-src="{{item.img_url}}" width="30" height="30">
           </a>
           &nbsp;
-          <a href="/app">
+          <a href="/apps/1">
             {{item.name}}
           </a>
         </td>
@@ -54,10 +57,8 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="4">
-        </td>
-        <td>
-          <a class="btn btn-default">CREATE APP</a>
+        <td colspan="6" class="text-right">
+          <a href="/apps/create" class="btn btn-default">CREATE APP</a>
         </td>
       </tr>
     </tfoot>
