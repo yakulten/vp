@@ -1,67 +1,23 @@
 var express = require('express');
 var router = express.Router();
 
-var sectionHandler = function(req, res){
-  var renderPath;
+router.get(/.*/, function(req, res){
+  var pathArr = req.path.replace(/^\//, "").split("/"),
+    breadcrumbs = req.path.replace(/^\//, "").split("/");
 
-  res.locals.path.unshift(req.params.section);
-
-  if(res.locals.path.length === 1){
-    res.locals.path.push("list");
+  if(pathArr.length === 0 || req.path === "/"){
+    pathArr = ["index"];
+  } else if(pathArr.length === 1){
+    pathArr.push("index");
   }
 
-  res.locals.breadcrumbs.push(req.params.section);
-  res.render(res.locals.path.join("/"));
-};
-
-var viewHandler = function(req, res){
-  res.locals.breadcrumbs.push("METAL SLUG DEFENSE");
-  if(res.locals.path.length === 0){
-    res.locals.path.push("view");
+  if(/\d+/.test(pathArr[1])){
+    pathArr[1] = "view";
+    breadcrumbs[1] = "METAL SLUG DEFENCE"
   }
-  sectionHandler(req, res);
-};
 
-var createHandler = function(req, res){
-  if(res.locals.path.length === 0){
-    res.locals.path.push("create");
-  }
-  sectionHandler(req, res);
-};
-
-
-var pageHandler = function(req, res){
-  res.locals.breadcrumbs.push(req.params.page);
-  res.locals.path.push(req.params.page);
-  viewHandler(req, res);
-};
-
-
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('apps/list', { breadcrumbs: [ "APPS" ] });
+  console.log(pathArr.join("/"))
+  res.render(pathArr.join("/"), { breadcrumbs: breadcrumbs });
 });
-
-router.get('/apps/create', function(req, res){
-  req.params.section = "apps";
-  req.params.page = "create";
-  pageHandler(req, res);
-});
-
-
-router.get('/apps/:id', function(req, res){
-  req.params.section = "apps";
-  viewHandler(req, res);
-});
-
-router.get('/apps/:id/:page', function(req, res){
-  req.params.section = "apps";
-  pageHandler(req, res);
-});
-
-router.get('/:section', sectionHandler);
-
-router.get('/:section/:page', pageHandler);
-
 
 module.exports = router;

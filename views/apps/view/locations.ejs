@@ -1,0 +1,145 @@
+<%
+  var config = {
+    options: {
+      chart: {
+        type: "bar",
+        height: 298,
+        marginBottom: 44
+      },
+      plotOptions: {
+        bar: {
+          colorByPoint: true
+        }
+      },
+      legend: {
+      }
+    },
+    xAxis: {
+      categories: [ "lobby1", "lobby2", "lobby3", "lobby4", "lobby5" ],
+      opposite: true
+    },
+    series: [{
+      name: "LOCATIONS",
+      data: [
+        _.random(500, 1000),
+        _.random(500, 1000),
+        _.random(500, 1000),
+        _.random(500, 1000),
+        _.random(500, 1000)
+      ]
+    }]
+  };
+%>
+
+<div class="container-fluid card">
+  <div class="row">
+    <div class="col-sm-9">
+      <ul class="nav nav-tabs nav-justified" style="margin-bottom:-1px">
+        <%
+          var settings = [ {
+            name: "LOCATIONS",
+            description: "",
+            icon: "map-marker",
+            value: Math.floor(Math.random() * 200 + 100),
+            isSelected: true
+          }, {
+            name: "EVENTS",
+            description: "",
+            icon: "gift",
+            value: Math.floor(Math.random() * 200) + " / " + Math.floor(Math.random() * 200 + 100)
+          }, {
+            name: "VERSIONS",
+            description: "LATEST",
+            icon: "slack",
+            value: "1.0a"
+          }, {
+            name: "REWARDS",
+            description: "",
+            icon: "money",
+            value: Math.floor(Math.random() * 200 + 100) + "W"
+          }, {
+            name: "IN APP PURCHASES",
+            description: "",
+            icon: "credit-card",
+            value: Math.floor(Math.random() * 2000000 + 100)
+          }, {
+            name: "COHORTS",
+            description: "",
+            icon: "users",
+            value: Math.floor(Math.random() * 5)
+          } ];
+
+          for(var i = 0; i < settings.length; i++){
+            var setting = settings[i]
+        %>
+        <li class="<%= setting.isSelected ? 'active' : '' %>">
+          <a href="/apps/1/locations" class="text-muted">
+            <i class="fa fa-<%= setting.icon %> fa-border"></i><%= setting.name %>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <div class="col-md-3 text-right">
+      <div style="margin-top:5px;">
+        <button class="btn btn-default">DEVELOPER CONSOLE</button>
+        <button class="btn btn-default">EDIT</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" ng-controller="ChartsController" data-config="<%= JSON.stringify(config) %>">
+  <div class="page-header">
+    <h3 class="h4">LOCATIONS <a href="#locationsInfo" data-toggle="collapse"><i class="fa fa-info-circle"></i></a></h3>
+    <div>
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-9">
+      <table class="table table-hover" ng-table>
+        <tbody>
+          <tr ng-repeat="item in [1,2,3,4,5]">
+            <td data-title="'LOCATION'" sortable="'temp'">
+              lobby{{$index + 1}}
+            </td>
+            <td data-title="'DESCRIPTION'" sortable="'temp'">
+              first location in game
+            </td>
+            <td data-title="'EXTERNAL CAMPAIGNS'" sortable="'temp'">
+              Internal Cross Promotion
+            </td>
+            <td data-title="'MANAGEMENT'" width="100">
+              <button class="btn btn-default">ON</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button class="btn btn-default" ui-sref="locations.create">CREATE</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="col-sm-3">
+      <highchart config="config"></highchart>
+    </div>
+  </div>
+</div>
+<script>
+  angular.module("vp").config(function($stateProvider, $urlRouterProvider){
+    $stateProvider
+      .state("locations", {})
+      .state("locations.create", {
+        onEnter: function($stateParams, $state, $modal, $resource){
+          $modal.open({
+            templateUrl: "/public/templates/locations/create.html"
+          });
+        }
+      })
+  });
+</script>

@@ -7,7 +7,7 @@
         fontFamily: "inherit"
       }
     },
-    colors: [ "#fb7767", "#f93631", "#fb9c92", "#2a2a33", "#adbdc4", "#e1ebed" ],
+    colors: [ "#fb7767", "#f93631", "#fb9c92", "#2a2a33", "#adbdc4", "#d1dbed" ],
     // colors: [ "#009bdf", "#0076c6", "#76c1f4", "#2a2a33", "#adbdc4", "#e1ebed" ],
     title: {
       text: ""
@@ -19,7 +19,7 @@
       x: -8,
       y: -8,
       itemStyle: {
-        fontWeight: "normal"
+        // fontWeight: "normal"
       }
     },
     plotOptions: {
@@ -52,7 +52,7 @@
     },
     xAxis: {
       tickmarkPlacement: "on",
-      lineColor: "#e1ebed",
+      lineColor: "#eee",
       tickWidth: 0,
       labels: {
         staggerLines: 1
@@ -62,12 +62,13 @@
       }
     },
     yAxis: {
-      gridLineColor: "#e1ebed",
+      gridLineColor: "#eee",
       title: {
         enabled: false
       }
     },
     tooltip: {
+      crosshairs: true,
       shared: true
     }
   })

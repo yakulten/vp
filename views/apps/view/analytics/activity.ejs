@@ -1,0 +1,72 @@
+<div ng-controller="ActivityController">
+  <div class="container-fluid card">
+    <div class="page-header row">
+      <div class="col-sm-6">
+        <h3 class="h4">ACTIVITY <a href="#pageinfo" data-toggle="collapse"><i class="fa fa-info-circle"></i></a></h3>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-inline text-right">
+          <select class="form-control" ng-model="dateLength">
+            <option value="31">Month</option>
+            <option value="7">Week</option>
+            <option value="14">2 Weeks</option>
+            <option value="100">Duration</option>
+          </select>
+        </div>
+      </div>
+      <div id="pageinfo" class="col-sm-12 collapse in">
+        <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="form-inline text-right">
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control">
+          <span class="fa fa-search form-control-feedback"></span>
+        </div>
+        <button class="btn btn-default"><i class="fa fa-download"></i></button>
+      </div>
+    </div>
+    <table class="table table-hover" ng-table>
+      <tbody>
+        <tr ng-repeat="item in items">
+          <td width="2em">
+            <input type="checkbox" ng-model="item.isChecked" ng-change="toggle(item);">
+          </td>
+          <td data-title="'NAME'" sortable="'temp'">
+            {{item.name}}
+          </td>
+          <td width="16.666666667%" data-title="'COUNT'" sortable="'temp'">
+            {{item.count|number:0}}
+          </td>
+          <td width="16.666666667%" data-title="'UNIQUE COUNT'" sortable="'temp'">
+            {{item.uniqueCount|number:0}}
+          </td>
+          <td width="16.666666667%" data-title="'DAY TO DAY'" sortable="'temp'">
+            {{item.dtd}} <small>(<i class="fa fa-caret-up"> {{item.dtdp}}%</i>)</small>
+          </td>
+          <td width="16.666666667%" data-title="'WEEK TO WEEK'" sortable="'temp'">
+            {{item.dtd}} <small>(<i class="fa fa-caret-up"> {{item.dtdp}}%</i>)</small>
+          </td>
+          <td width="16.666666667%" data-title="'MONTH TO MONTH'" sortable="'temp'">
+            {{item.dtd}} <small>(<i class="fa fa-caret-up"> {{item.dtdp}}%</i>)</small>
+          </td>
+          <td  width="3em">
+            <button class="btn btn-default"><i class="fa fa-download"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="height:250px">
+    <div class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container-fluid">
+        <highchart config="config"></highchart>
+      </div>
+    </div>
+  </div>
+</div>

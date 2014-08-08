@@ -1,529 +1,65 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= title %></title>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <%- css('bootstrap.less') %>
-  <%- css('style.less') %>
-  <style>
-    .ng-table-pager {display:none;}
-  </style>
-  <%- js('application.js') %>
-</head>
-<body ng-app="valuepotion" class="vp-app">
-  <div class="vp-side">
-    <i class="vp-menu-btn fa fa-bars fa-2x"></i>
-    <div class="vp-menus" ng-controller="MenuController">
-      <ul class="list-unstyled tree">
-        <li>
-          <a href="#" class="tree-title">APPS <i class="pull-right fa fa-caret-right"></i></a>
-          <ul class="list-unstyled">
-            <li>
-              <a class="media tree-title tree-child-title">
-                <img src="//lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="68" class="pull-left">
-                <span class="media-body" style="display:block;color:#666">
-                  <strong href="#" style="display:block;color:#eee">
-                    METAL SLUG DEFENCE
-                  </strong>
-                  <small style="display:block;margin-bottom:15px;">
-                    SNK PLAY MORE | STRATEGY
-                  </small>
-                  <small style="display:block;line-height:11px">
-                    “METAL SLUG DEFENSE” breaks a new record again
-                  </small>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="list-unstyled tree" ng-repeat="tree in treedata">
-        <li>
-          <a href="#" class="tree-title">
-            <img ng-if="tree.img !== undefined" ng-src="{{tree.img}}" width="17" height="17">
-            {{tree.label}}
-            <i class="pull-right fa fa-caret-right"></i>
-          </a>
-          <ul class="list-unstyled" ng-show="tree.children && tree.children.length > 0">
-            <li ng-repeat="child in tree.children">
-              <a href="#" class="tree-title tree-child-title" ng-class="{active: child.isActive }">
-                {{child.label}}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+<div class="container-fluid card">
+  <div class="page-header">
+    <h4>INDEX</h4>
   </div>
-  <div class="vp-body">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <a href="#" class="navbar-brand">METAL SLUG DEFENCE - ANALYTICS</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-left">
-            <li>
-              <a href="#"></a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#"><img src="//media-cache-ec0.pinimg.com/70x/e1/1b/6c/e11b6cc557894fae8aad1a631fe6e5d5.jpg" width="32" height="32" class="img-circle" style="margin:-10px 0 -10px 20px"> Cras sit amet</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-cog fa-lg"><span class="caret"></span></i></a>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-    <div class="container-fluid card">
-      <div class="row page-header">
-        <div class="col-md-6">
-          <h3 class="h4">OVERVIEW</h3>
-        </div>
-        <div class="col-md-6">
-          <form class="form-horizontal row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label class="col-sm-6 control-label text-muted">Reporting on:</label>
-                <div class="col-sm-6">
-                  <select class="form-control">
-                    <option>Location</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-3">
-              <select class="form-control">
-                <option>City</option>
-              </select>
-            </div>
-            <div class="col-xs-3">
-              <select class="form-control">
-                <option>Location</option>
-              </select>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid card" ng-controller="LocationsController">
-      <div class="row page-header">
-        <div class="col-md-6">
-          <h4>LOCATION</h4>
-        </div>
-        <div class="col-md-6">
-          <form class="form-horizontal row">
-            <div class="col-xs-6 col-xs-offset-6">
-              <select class="form-control">
-                <option>Top 10 Countries</option>
-              </select>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="container" style="position:relative;">
-        <img src="/public/images/dotted-worldmap.png" width="100%">
-        <a ng-repeat="item in items" href="#" class="pin" style="position:absolute;top:{{item.location.y}}%;left:{{item.location.x}}%">
-          <img src="/public/images/pin.png" width="20" height="26" style="margin: -20px 0 0 -10px">
-        </a>
-      </div>
-      <div class="row">
-        <div class="col-md-9">
-          <table class="table" ng-table="tableParams">
-            <tbody>
-              <tr ng-repeat="item in $data">
-                <td data-title="'NO'">
-                  {{$index + 1}}.
-                </td>
-                <td data-title="'LOCATION'">
-                  <a href="#">{{item.location.name}}</a>
-                </td>
-                <td data-title="'DAU'">
-                  {{item.dau|number}}
-                </td>
-                <td data-title="'REVENUE'">
-                  {{item.revenue|currency}}
-                </td>
-                <td data-title="'INSTALLS'">
-                  {{item.installs|number}}
-                </td>
-                <td data-title="'SESSION'">
-                  {{item.avgSessionLength|date:'mm:dd'}}
-                </td>
-                <td data-title="'SESSION/USER'">
-                  {{item.sessionPerUser|number}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-3">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>
-                  WORLD
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>10,129 <small>(<i class="fa fa-caret-up"> 32%</i>)</small> users</td>
-              </tr>
-              <tr>
-                <td>$21,302,193.00 <small>(<i class="fa fa-caret-up"> 32%</i>)</small> earned </td>
-              </tr>
-              <tr>
-                <td>5,213 <small>(<i class="fa fa-caret-up"> 32%</i>)</small> installs</td>
-              </tr>
-              <tr>
-                <td>40:12 <small>(<i class="fa fa-caret-up"> 32%</i>)</small> avg session time length</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <%
-      var config = {
-        options: {
-          "chart": {
-            "height": 242
-          }
-        },
-        "series": [
-          {
-            "type":"column",
-            color: "#adbdc4"
-          },
-          {
-            "type":"line",
-            "yAxis":1
-          }
-        ],
-        xAxis: {
-          tickInterval: 4
-        },
-        "yAxis": [
-          { },
-          {
-            "opposite":true,
-            "min": 0
-          }
-        ]
-      };
-
-    %>
-    <div class="container-fluid card" ng-controller="ChartsController" data-url="/public/json/dau.json" data-config='<%= JSON.stringify(config) %>'>
-      <div class="row page-header">
-        <div class="col-md-6">
-          <h4>DAU - REVENUE</h4>
-        </div>
-        <div class="col-md-6">
-          <button class="btn btn-default pull-right">
-            <i class="fa fa-download"></i>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-9">
-          <highchart type="chart" config="config"></highchart>
-        </div>
-        <div class="col-md-3">
-          <table class="table">
-            <thead>
-              <tr>
-                <th colspan="3">
-                  RECORDS
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>WTW</td>
-                <td><i class="fa fa-caret-up"></i> 2%</td>
-                <td><i class="fa fa-caret-up"></i> 4%</td>
-              </tr>
-              <tr>
-                <td>MTM</td>
-                <td><i class="fa fa-caret-up"></i> 5%</td>
-                <td><i class="fa fa-caret-up"></i> 15%</td>
-              </tr>
-              <tr>
-                <td>YTY</td>
-                <td><i class="fa fa-caret-up"></i> 72%</td>
-                <td><i class="fa fa-caret-up"></i> 128%</td>
-              </tr>
-              <tr>
-                <td>2014.07.02</td>
-                <td colspan="2"><a href="#">113 DAU on 3 campaign(s)</a></td>
-              </tr>
-              <tr>
-                <td>2014.07.17</td>
-                <td colspan="2"><a href="#">600k revenue on 2 campaign(s)</a></td>
-              </tr>
-              <tr>
-                <td>TODAY</td>
-                <td colspan="2"><a href="#">3 campaign(s) is on live</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <%
-      var config = {
-        options: {
-          chart: {
-            type: "column",
-            animation: false,
-            height: 242
-          }
-        },
-        xAxis: {
-          tickInterval: 4
-        }
-      };
-
-
-    %>
-    <div class="container-fluid card" ng-controller="ChartsController" data-url="/public/json/installs.json" data-config='<%= JSON.stringify(config) %>'>
-      <div class="row page-header">
-        <div class="col-md-6">
-          <h4>INSTALLS</h4>
-        </div>
-        <div class="col-md-6">
-          <button class="btn btn-default pull-right">
-            <i class="fa fa-download"></i>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-9">
-          <highchart type="chart" config="config"></highchart>
-        </div>
-        <div class="col-md-3">
-          <table class="table">
-            <thead>
-              <tr>
-                <th colspan="3">
-                  RECORDS
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>WTW</td>
-                <td><i class="fa fa-caret-up"></i> 2%</td>
-                <td><i class="fa fa-caret-up"></i> 4%</td>
-              </tr>
-              <tr>
-                <td>MTM</td>
-                <td><i class="fa fa-caret-up"></i> 5%</td>
-                <td><i class="fa fa-caret-up"></i> 15%</td>
-              </tr>
-              <tr>
-                <td>YTY</td>
-                <td><i class="fa fa-caret-up"></i> 72%</td>
-                <td><i class="fa fa-caret-up"></i> 128%</td>
-              </tr>
-              <tr>
-                <td>2014.07.02</td>
-                <td colspan="2"><a href="#">113 DAU on 3 campaign(s)</a></td>
-              </tr>
-              <tr>
-                <td>2014.07.17</td>
-                <td colspan="2"><a href="#">600k revenue on 2 campaign(s)</a></td>
-              </tr>
-              <tr>
-                <td>TODAY</td>
-                <td colspan="2"><a href="#">3 campaign(s) is on live</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <%
-      var config = {
-        options: {
-          chart: {
-            type: "column",
-            height: 242
-          }
-        },
-        xAxis: {
-          tickInterval: 2
-        }
-      };
-    %>
-    <%
-      var sessionConfig = {
-        options: {
-          "chart": {
-            "height": 242
-          }
-        },
-        "series": [
-          {
-            "type":"column",
-            color: "#adbdc4"
-          },
-          {
-            "type":"line",
-            "yAxis":1
-          }
-        ],
-        xAxis: {
-          tickInterval: 2
-        },
-        "yAxis": [
-          { },
-          {
-            "opposite":true,
-            "min": 0,
-          }
-        ]
-      };
-    %>
-    <div class="container-fluid card" ng-controller="ChartsController" data-url="/public/json/sessions.json" data-config='<%= JSON.stringify(sessionConfig) %>'>
-      <div class="row page-header">
-        <div class="col-md-9">
-          <h4>SESSION</h4>
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-default pull-right">
-            <i class="fa fa-download"></i>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-9">
-          <highchart type="chart" config="config"></highchart>
-        </div>
-        <div class="col-md-3">
-          <table class="table">
-            <thead>
-              <tr>
-                <th colspan="3">
-                  RECORDS
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>WTW</td>
-                <td><i class="fa fa-caret-up"></i> 2%</td>
-                <td><i class="fa fa-caret-up"></i> 4%</td>
-              </tr>
-              <tr>
-                <td>MTM</td>
-                <td><i class="fa fa-caret-up"></i> 5%</td>
-                <td><i class="fa fa-caret-up"></i> 15%</td>
-              </tr>
-              <tr>
-                <td>YTY</td>
-                <td><i class="fa fa-caret-up"></i> 72%</td>
-                <td><i class="fa fa-caret-up"></i> 128%</td>
-              </tr>
-              <tr>
-                <td>2014.07.02</td>
-                <td colspan="2"><a href="#">113 DAU on 3 campaign(s)</a></td>
-              </tr>
-              <tr>
-                <td>2014.07.17</td>
-                <td colspan="2"><a href="#">600k revenue on 2 campaign(s)</a></td>
-              </tr>
-              <tr>
-                <td>TODAY</td>
-                <td colspan="2"><a href="#">3 campaign(s) is on live</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <%
-      var config = {
-        options: {
-          "chart": {
-            type: "line",
-            "height": 242
-          }
-        },
-        xAxis: {
-          tickInterval: 2
-        }
-      };
-    %>
-    <div class="container-fluid card" ng-controller="ChartsController" data-url="/public/json/retention.json" data-config='<%= JSON.stringify(config) %>'>
-      <div class="row page-header">
-        <div class="col-md-9">
-          <h4>RETENTION</h4>
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-default pull-right">
-            <i class="fa fa-download"></i>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-9">
-          <highchart type="chart" config="config"></highchart>
-        </div>
-        <div class="col-md-3">
-          <table class="table">
-            <thead>
-              <tr>
-                <th colspan="3">
-                  RECORDS
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>WTW</td>
-                <td><i class="fa fa-caret-up"></i> 2%</td>
-                <td><i class="fa fa-caret-up"></i> 4%</td>
-              </tr>
-              <tr>
-                <td>MTM</td>
-                <td><i class="fa fa-caret-up"></i> 5%</td>
-                <td><i class="fa fa-caret-up"></i> 15%</td>
-              </tr>
-              <tr>
-                <td>YTY</td>
-                <td><i class="fa fa-caret-up"></i> 72%</td>
-                <td><i class="fa fa-caret-up"></i> 128%</td>
-              </tr>
-              <tr>
-                <td>2014.07.02</td>
-                <td colspan="2"><a href="#">113 DAU on 3 campaign(s)</a></td>
-              </tr>
-              <tr>
-                <td>2014.07.17</td>
-                <td colspan="2"><a href="#">600k revenue on 2 campaign(s)</a></td>
-              </tr>
-              <tr>
-                <td>TODAY</td>
-                <td colspan="2"><a href="#">3 campaign(s) is on live</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-
-  </script>
-</body>
-</html>
+</div>
+<div class="container-fluid">
+  <dl class="dl-horizontal">
+    <dt><a href="/apps">APPS</a></dt>
+    <dd>
+      <p>
+        앱 리스트<br>
+        FILTER COMPONENT, TABLE
+      </p>
+    </dd>
+    <dt><a href="/apps/create">APPS/CREATE</a></dt>
+    <dd>
+      <p>
+        앱 생성 폼 <br>
+        FORM, TYPEAHEAD, CUSTOM SELECT, VALIDATION
+      </p>
+    </dd>
+    <dt><a href="/apps/1">APPS/{ID}</a></dt>
+    <dd>
+      <p>
+        앱 상세 <br>
+        BOX-MENU
+      </p>
+    </dd>
+    <dt><a href="/apps/1/locations">APPS/{ID}/LOCATIONS</a></dt>
+    <dd>
+      <p>
+        앱 상세 - 로케이션 세팅<br/>
+        NAVBAR, MODAL, COLLAPSE, TABLE-CHART, BAR-CHART
+      </p>
+    </dd>
+    <dt><a href="/apps/1/analytics">APPS/{ID}/ANALYTICS</a></dt>
+    <dd>
+      <p>
+        앱 통계<br/>
+        GOOGLE-MAP, TABLE-TABLE, CHART-TABLE, BAR-LINE-COMBI-CHART
+      </p>
+    </dd>
+    <dt><a href="/apps/1/analytics/audience">APPS/{ID}/ANALYTICS/AUDIENCE</a></dt>
+    <dd>
+      <p>
+        앱 통계 - AUDIENCE<br/>
+        PIE-CHART
+      </p>
+    </dd>
+    <dt><a href="/apps/1/analytics/activity">APPS/{ID}/ANALYTICS/ACTIVITY</a></dt>
+    <dd>
+      <p>
+        앱 통계 - ACTIVITY<br/>
+        FIXED-BOTTOM-CHART, DYNAMIC-CHART
+      </p>
+    </dd>
+    <dt><a href="/apps/campaigns">MARKETING</a></dt>
+    <dd>
+      <p>
+        앱 통계 - ACTIVITY<br/>
+        FIXED-BOTTOM-CHART, DYNAMIC-CHART
+      </p>
+    </dd>
+  </dl>
+</div>

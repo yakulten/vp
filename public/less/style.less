@@ -12,7 +12,7 @@ body {
 
 .card {
   display:block;
-  border-bottom:1px solid #eee;
+  border-bottom:1px solid @table-border-color;
 }
 
 .vp-app {
@@ -39,6 +39,15 @@ body {
       width: 252px;
       opacity: 0;
       .transition(@transition);
+      h1 {
+        color:#a4aab2;
+        padding:16.5px 15px 17px;
+        margin:0;
+        font-size:15px;
+        line-height:17px;
+        height:50px;
+        border-bottom:1px solid #444;
+      }
     }
 
     &:hover {
@@ -63,7 +72,7 @@ body {
     z-index:2;
     .transition(@transition);
 
-    .navbar-fixed-top {
+    .navbar-fixed-top, .navbar-fixed-bottom {
       left:0px;
       margin-left: 37px;
       .transition(@transition);
@@ -73,54 +82,78 @@ body {
   .vp-side:hover + .vp-body {
   // .vp-side + .vp-body {
     left:215px;
-    .navbar-fixed-top, .affix {
+    .navbar-fixed-top, .navbar-fixed-bottom {
       left:215px;
     }
   }
 }
 
 .tree {
-  padding-top:8px;
-  padding-bottom:8px;
-  border-top:1px solid @gray;
-  border-bottom:1px solid @gray-dark;
+  // padding:@padding-base-vertical * 2 0;
   margin-bottom:0;
-  li {
-    .tree-title {
-      font-size:@font-size-large;
+  font-size:13px;
+  > li {
+    > a {
       display:block;
       padding:5px 15px;
       border-top:1px solid transparent;
       border-bottom:1px solid transparent;
       border-left:1px solid transparent;
+      font-weight:bold;
+      color:lighten(@navbar-inverse-link-color, 20%);
+      background-color: lighten(@navbar-inverse-bg, 8%);
       &:hover, &:active {
         color:@navbar-inverse-link-hover-color;
         border-top:1px solid darken(@navbar-inverse-link-active-bg, 20%);
         border-bottom:1px solid lighten(@navbar-inverse-link-active-bg, 20%);
         border-left:1px solid darken(@brand-primary, 20%);
         background-color: @navbar-inverse-link-active-bg;
+        text-decoration: none;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+      &.active {
+        color: @navbar-default-link-active-color;
+        border-left: 1px solid @link-color;
+        background-color: #fff;
+      }
+      &:after {
+        content:"\f0da";
+        font-family: FontAwesome;
       }
     }
-
-    .tree-child-title {
+    > .tree {
       font-size:@font-size-base;
-    }
-
-    .active {
-      color: @navbar-default-link-active-color;
-      border-left: 1px solid @link-color;
-      background-color: #fff;
-    }
-
-  }
-  a {
-    color:@navbar-inverse-link-color;
-    &:hover, &:active {
-      text-decoration: none;
+      padding:0;
+      margin-bottom:-1px;
+      > li {
+        > a {
+          padding:2px 15px;
+          font-weight:normal;
+          color:@navbar-inverse-link-color;
+          background:transparent;
+          &:hover, &:active {
+            color:@navbar-inverse-link-hover-color;
+            background-color: @navbar-inverse-link-active-bg;
+          }
+          &:after {
+            content:"";
+          }
+        }
+        > .tree {
+          font-size:@font-size-small;
+          > li {
+            > a {
+              padding-left: 25px;
+            }
+          }
+        }
+      }
     }
   }
   &:last-child {
-    border-bottom: 0;
+    // border-bottom-color:transparent;
   }
 }
 
@@ -155,6 +188,12 @@ body {
       height:50px;
       #gradient > .vertical(@start-color: rgba(255,255,255,0); @end-color: @body-bg);
     }
+    .h3 {
+      margin-top:0
+    }
+  }
+  .app-btn-group {
+    margin-top:21px;
   }
 }
 

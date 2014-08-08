@@ -1,77 +1,29 @@
+<script type="text/ng-template" id="menu_template.html">
+  <a ng-href="{{branch.href}}" ng-if="!branch.label.isObject">
+    {{branch.label}}
+  </a>
+  <a ng-href="{{branch.href}}" ng-if="branch.label.isObject" class="media active">
+    <img src="//lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="68" class="pull-left">
+    <span class="media-body" style="display:block;color:#666">
+      <strong href="#" style="display:block;color:#eee">
+        METAL SLUG DEFENCE
+      </strong>
+      <small style="display:block;margin-bottom:15px;">
+        SNK PLAY MORE | STRATEGY
+      </small>
+      <small style="display:block;line-height:11px">
+        “METAL SLUG DEFENSE” breaks a new record again
+      </small>
+    </span>
+  </a>
+  <ul class="list-unstyled tree" ng-if="branch.children.length > 0">
+    <li ng-repeat="branch in branch.children" ng-include src="'menu_template.html'"></li>
+  </ul>
+</script>
 <i class="vp-menu-btn fa fa-bars fa-2x"></i>
 <div class="vp-menus" ng-controller="MenuController">
-  <ul class="list-unstyled tree" style="background-color:#111111;border-top-color:transparent">
-    <li>
-      <a href="/" style="display:block;padding:6px 20px;font-size:1.25em">VALUE POTION</a>
-    </li>
-  </ul>
+  <h1 href="/">VALUE POTION</h1>
   <ul class="list-unstyled tree">
-    <li>
-      <a href="/apps" class="tree-title">APPS <i class="pull-right fa fa-caret-right"></i></a>
-      <ul class="list-unstyled">
-        <li>
-          <a href="/apps/1" class="media tree-title tree-child-title">
-            <img src="//lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="68" class="pull-left">
-            <span class="media-body" style="display:block;color:#666">
-              <strong href="#" style="display:block;color:#eee">
-                METAL SLUG DEFENCE
-              </strong>
-              <small style="display:block;margin-bottom:15px;">
-                SNK PLAY MORE | STRATEGY
-              </small>
-              <small style="display:block;line-height:11px">
-                “METAL SLUG DEFENSE” breaks a new record again
-              </small>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="/apps/1/locations" class="tree-title tree-child-title">
-            LOCATIONS
-          </a>
-        </li>
-        <li>
-          <a href="#" class="tree-title tree-child-title">
-            CUSTOM EVENT
-          </a>
-        </li>
-        <li>
-          <a href="#" class="tree-title tree-child-title">
-            GAME VERSION
-          </a>
-        </li>
-        <li>
-          <a href="#" class="tree-title tree-child-title">
-            REWARD ITEM
-          </a>
-        </li>
-        <li>
-          <a href="#" class="tree-title tree-child-title">
-            IAP ITEM
-          </a>
-        </li>
-        <li>
-          <a href="#" class="tree-title tree-child-title">
-            COHORT
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-  <ul class="list-unstyled tree" ng-repeat="tree in treedata">
-    <li>
-      <a ng-href="{{tree.href}}" class="tree-title">
-        <img ng-if="tree.img !== undefined" ng-src="{{tree.img}}" width="17" height="17">
-        {{tree.label}}
-        <i class="pull-right fa fa-caret-right"></i>
-      </a>
-      <ul class="list-unstyled" ng-show="tree.children && tree.children.length > 0">
-        <li ng-repeat="child in tree.children">
-          <a ng-href="{{child.href}}" class="tree-title tree-child-title" ng-class="{active: child.isActive }">
-            {{child.label}}
-          </a>
-        </li>
-      </ul>
-    </li>
+    <li ng-repeat="branch in tree" ng-include src="'menu_template.html'"></li>
   </ul>
 </div>
