@@ -291,20 +291,28 @@ form.campaign {
   .card {
     margin-bottom:15px;
   }
-
-  .form-group {
-    overflow:hidden;
-    height:0;
-    margin-bottom:0;
-    .transition(height 0.32s);
-    &.important-form-group {
-      overflow:visible;
-      height:auto;
-      margin-bottom:15px;
-    }
-  }
-
+  
   .form-pane {
+    .form-group {
+      overflow:hidden;
+      height:0;
+      margin-bottom:0;
+      .transition(all 0.32s);
+      &.important-form-group {
+        overflow:visible;
+        height:auto;
+        margin-bottom:5px;
+      }
+    }
+
+    .card {
+      margin-bottom: 10px;
+    }
+
+    label {
+      margin-bottom: 2px;
+    }
+
     &.active {
       .form-group {
         overflow:visible;
@@ -314,4 +322,20 @@ form.campaign {
     }
   }
 
+  .thumb-btn-wrap {
+    width:162px;
+    .thumb-btn {
+      .transition(width .32s)
+    }
+  }
+
+  .landscape-thumb-btn {
+    width:160px;
+    height:103px;
+  }
+
+  .portrait-thumb-btn {
+    width:68px;
+    height:103px;
+  }
 }

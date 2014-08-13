@@ -1,10 +1,10 @@
 <form rule="form" name="form" class="campaign" ng-controller="CampaignFormController" ng-cloak>
   <div class="container-fluid card">
     <div class="page-header row">
-      <div class="col-md-6">
-        <h4>CREATE {{campaigntype.name}}</h4>
+      <div class="col-md-3 col-sm-offset-3">
+        <h4>CREATE <a href="#"><i class="fa fa-info-circle"></i></a></h4>
       </div>
-      <div class="col-md-2 col-md-offset-4">
+      <div class="col-md-3">
         <select ng-model="campaigntype" ng-options="campaigntype as campaigntype.name for campaigntype in campaigntypes" class="form-control">
         </select>
       </div>
@@ -14,7 +14,9 @@
     <div class="container-fluid card">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          <label>APP</label>
+          <div class="form-group important-form-group">
+            <label>APP</label>
+          </div>
           <div class="form-group">
             <img class="img-rounded app-img" ng-src="{{app.img_url}}" width="150" height="150">
           </div>
@@ -32,7 +34,9 @@
     <div class="container-fluid card">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          <label>CAMPAIGN</label>
+          <div class="form-group important-form-group">
+            <label>CAMPAIGN</label>
+          </div>
           <div class="form-group">
             <label class="radio-inline">
               <input type="radio" name="onoff">ON
@@ -75,17 +79,64 @@
       </div>
     </div>
   </div>
-  <div class="form-pane active">
+  <div class="form-pane">
     <div class="container-fluid card">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          <label>CONTENT</label>
+          <div class="form-group important-form-group">
+            <label>CONTENT</label> <a href="#contentHelp" data-toggle="collapse"><i class="fa fa-info-circle"></i></a>
+            <div id="contentHelp" class="collapse">
+              <p class="help-block">
+                ※ When you upload image, it is optimized for smartphone in game.<br/>
+                ※ Required image size: Horizontal 1500*1000, Vertical 1000*1500 under 1MB<br/>
+                ※ When you use this option 'no display today', we recommend you not to put text on the right side of the bottom.<br/>
+                ※ This option works on SDK version 1.0.11 and above.
+              </p>
+            </div>
+          </div>
+          <div class="form-group important-form-group">
+            <div class="media card">
+              <div class="thumb-btn-wrap pull-left text-center">
+                <button type="button" class="btn btn-default thumb-btn {{orientation}}-thumb-btn" ng-model="bg" style="background-image:url({{app.img_url}})">
+                  <span class="text-muted">
+                    <span class="fa fa-2x fa-image"></span><br/>
+                    {{orientation.toUpperCase()}}
+                  </span>
+                </button>
+              </div>
+              <div class="media-body">
+                <div class="form-group important-form-group">
+                  <label class="radio-inline">
+                    <input type="radio" name="orientation" ng-model="orientation" value="landscape">LANDSCAPE
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="orientation" ng-model="orientation" value="portrait">PORTRAIT
+                  </label>
+                </div>
+                <div class="form-group important-form-group">
+                  <input type="text" class="form-control" placeholder="IMAGE NAME">
+                </div>
+                <div class="form-group important-form-group">
+                  <input type="text" class="form-control" placeholder="IMPRESSION WEIGHT">
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="form-group">
-            <label class="radio-inline">
-              <input type="radio" name="onoff">ON
+            <label class="checkbox-inline">
+              <input type="checkbox" >
+              NO DISPLAY TODAY OPTION
             </label>
-            <label class="radio-inline">
-              <input type="radio" name="onoff">OFF
+          </div>
+          <div class="form-group">
+            <select class="form-control">
+              <option>OPEN URL</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-inline">
+              <input type="checkbox" >
+              CLOSE AFTER CLICK
             </label>
           </div>
         </div>

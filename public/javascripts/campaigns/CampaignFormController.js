@@ -26,6 +26,8 @@
     $scope.start_date = new Date();
     $scope.end_date = null;
 
+    $scope.orientation = "landscape";
+
     $scope.openCalendar = function($event){
       $event.preventDefault();
       $event.stopPropagation();
