@@ -18,6 +18,7 @@ body {
 .vp-app {
   .vp-side {
     position: fixed;
+    overflow: auto;
     top:0;
     bottom:0;
     width: 37px;
@@ -42,16 +43,17 @@ body {
       .h1 {
         display:block;
         color:#a4aab2;
-        padding:16.5px 15px 17px;
+        padding:18px 15px;
         margin:0;
         font-size:15px;
         line-height:17px;
-        height:50px;
-        border-bottom:1px solid #444;
+        height:51px;
+        border-bottom:1px solid #333;
+        background-color:@navbar-inverse-bg;
       }
     }
 
-    &:hover {
+    &:hover, &.in {
       width: 252px;
       .vp-menu-btn {
         opacity: 0;
@@ -59,6 +61,12 @@ body {
       .vp-menus {
         left: 0px;
         opacity: 1;
+      }
+    }
+    @media (max-width: @screen-sm-min) {
+      width:0;
+      .vp-menu-btn {
+        display:none;
       }
     }
   }
@@ -78,13 +86,22 @@ body {
       margin-left: 37px;
       .transition(@transition);
     }
+
+    @media (max-width: @screen-sm-min) {
+      margin-left:0;
+      .navbar-fixed-top, .navbar-fixed-bottom {
+        margin-left:0;
+      }
+    }
   }
 
-  .vp-side:hover + .vp-body {
+  .vp-side:hover + .vp-body, .vp-side.in + .vp-body {
   // .vp-side + .vp-body {
     left:215px;
+    margin-left: 37px;
     .navbar-fixed-top, .navbar-fixed-bottom {
       left:215px;
+      margin-left: 37px;
     }
   }
 }
@@ -249,4 +266,52 @@ form.app {
 // override font awesome
 .fa-border {
   border-color:#ccc;
+}
+
+.navbar-brand {
+  .bread-crumb:after {
+    content: " -";
+  }
+  .bread-crumb:last-child:after {
+    content: "";
+  }
+  @media (max-width: @screen-sm-min) {
+    .bread-crumb {
+      display:none;
+      &:last-child {
+        display:inline;
+      }
+    }
+  }
+}
+
+.highchart {height:242px}
+
+form.campaign {
+  .card {
+    margin-bottom:15px;
+  }
+
+  .form-group {
+    overflow:hidden;
+    height:0;
+    margin-bottom:0;
+    .transition(height 0.32s);
+    &.important-form-group {
+      overflow:visible;
+      height:auto;
+      margin-bottom:15px;
+    }
+  }
+
+  .form-pane {
+    &.active {
+      .form-group {
+        overflow:visible;
+        height:auto;
+        margin-bottom:15px;
+      }
+    }
+  }
+
 }

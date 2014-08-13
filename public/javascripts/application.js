@@ -10,7 +10,6 @@
 //= require angular-ui-calendar
 //= require select2
 //= require angular-ui-select2/src/select2
-//= require angular-bootstrap/ui-bootstrap
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require bootstrap/dist/js/bootstrap
 //= require highcharts/highcharts
