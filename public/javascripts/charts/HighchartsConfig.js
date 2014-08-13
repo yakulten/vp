@@ -2,6 +2,7 @@
   Highcharts.setOptions({
     chart: {
       marginTop: 36,
+      height: 242,
       backgroundColor: "transparent",
       style: {
         fontFamily: "inherit"
@@ -62,6 +63,7 @@
       }
     },
     yAxis: {
+      min: 0,
       gridLineColor: "#eee",
       title: {
         enabled: false

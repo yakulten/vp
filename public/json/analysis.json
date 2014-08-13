@@ -1,0 +1,80 @@
+[
+{
+"id": 103,
+"name": "삼국야망S",
+"img_url": "http://i1.daumcdn.net/uf/original/U01/valuepotion/53147CA94A23540007",
+"appstore_id": 1,
+"appstore_name": "Google Play",
+"genre_description": "Action",
+"average_dau": 527.53164556962,
+"total_revenue": 196848300,
+"total_installs": 15884,
+"average_time_spent": 1058.3438881338,
+"timezone": "Asia/Seoul"
+},
+{
+"id": 94,
+"name": "삼국야망ST",
+"img_url": "http://i1.daumcdn.net/uf/original/U01/valuepotion/5314292650677A0015",
+"appstore_id": 1,
+"appstore_name": "Google Play",
+"genre_description": "Action",
+"average_dau": 2.6969696969697,
+"total_revenue": 5010900,
+"total_installs": 90,
+"average_time_spent": -4348226.76497939,
+"timezone": "Asia/Seoul"
+},
+{
+"id": 112,
+"name": "삼국야망ST_Tstore",
+"img_url": "http://i1.daumcdn.net/uf/original/U01/valuepotion/533293194A10FA0022",
+"appstore_id": 3,
+"appstore_name": "T Store",
+"genre_description": "Arcade",
+"average_dau": 1.33333333333333,
+"total_revenue": 279400,
+"total_installs": 21,
+"average_time_spent": 423.333748383638,
+"timezone": "Asia/Seoul"
+},
+{
+"id": 117,
+"name": "삼국야망S_Tstore",
+"img_url": "http://i1.daumcdn.net/uf/original/U01/valuepotion/534B953E472995003B",
+"appstore_id": 3,
+"appstore_name": "T Store",
+"genre_description": "Role Playing",
+"average_dau": 130.666666666667,
+"total_revenue": 37727800,
+"total_installs": 5242,
+"average_time_spent": 952.267528485161,
+"timezone": "Asia/Seoul"
+},
+{
+"id": 150,
+"name": "삼국야망S_Nstore",
+"img_url": "http://i1.daumcdn.net/uf/original/U01/valuepotion/53D612FA4929740019",
+"appstore_id": 4,
+"appstore_name": "Naver N Store",
+"genre_description": "Action",
+"average_dau": null,
+"total_revenue": null,
+"total_installs": null,
+"average_time_spent": null,
+"timezone": "Asia/Seoul"
+},
+{
+"id": 151,
+"name": "삼국야망ST_Nstore",
+"img_url": "http://i1.daumcdn.net/uf/original/U01/valuepotion/53D613AD4C74AF0011",
+"appstore_id": 4,
+"appstore_name": "Naver N Store",
+"genre_description": "Action",
+"average_dau": null,
+"total_revenue": null,
+"total_installs": null,
+"average_time_spent": null,
+"timezone": "Asia/Seoul"
+}
+]

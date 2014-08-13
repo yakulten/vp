@@ -65,7 +65,7 @@
       <table class="table" ng-table="tableParams">
         <tbody>
           <tr ng-repeat="item in $data">
-            <td data-title="'NO'">
+            <td data-title="'NO'" header-class="hidden-xs" class="hidden-xs">
               {{$index + 1}}.
             </td>
             <td data-title="'LOCATION'">
@@ -77,13 +77,13 @@
             <td data-title="'REVENUE'">
               {{item.revenue|currency}}
             </td>
-            <td data-title="'INSTALLS'">
+            <td data-title="'INSTALLS'"  header-class="hidden-xs" class="hidden-xs">
               {{item.installs|number}}
             </td>
-            <td data-title="'SESSION'">
+            <td data-title="'SESSION'" header-class="hidden-xs" class="hidden-xs">
               {{item.avgSessionLength|date:'mm:dd'}}
             </td>
-            <td data-title="'SESSION/USER'">
+            <td data-title="'SESSION/USER'" header-class="hidden-xs" class="hidden-xs">
               {{item.sessionPerUser|number}}
             </td>
           </tr>

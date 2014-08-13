@@ -1,0 +1,95 @@
+<form rule="form" name="form" class="campaign" ng-controller="CampaignFormController" ng-cloak>
+  <div class="container-fluid card">
+    <div class="page-header row">
+      <div class="col-md-6">
+        <h4>CREATE {{campaigntype.name}}</h4>
+      </div>
+      <div class="col-md-2 col-md-offset-4">
+        <select ng-model="campaigntype" ng-options="campaigntype as campaigntype.name for campaigntype in campaigntypes" class="form-control">
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-pane active">
+    <div class="container-fluid card">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <label>APP</label>
+          <div class="form-group">
+            <img class="img-rounded app-img" ng-src="{{app.img_url}}" width="150" height="150">
+          </div>
+          <div class="form-group important-form-group">
+            <div class="input-group">
+              <input ng-model="app" typeahead="app as app.name for app in apps | filter:$viewValue | limitTo:8" type="text" class="form-control" placeholder="APP *" required>
+              <span class="input-group-btn">
+                <button class="btn btn-default"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid card">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <label>CAMPAIGN</label>
+          <div class="form-group">
+            <label class="radio-inline">
+              <input type="radio" name="onoff">ON
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="onoff">OFF
+            </label>
+          </div>
+          <div class="form-group important-form-group">
+            <select ng-model="campaignsubtype" ng-options="subtype as subtype.name for subtype in campaignsubtypes" class="form-control">
+            </select>
+          </div>
+          <div class="form-group important-form-group">
+            <input type="text" class="form-control" placeholder="CAMPAIGN NAME *">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="CAMPAIGN DESCRIPTION *">
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="input-group">
+                  <input type="text" datepicker-popup="yyyy-MM-dd" ng-model="start_date" is-open="startDatePickerOpened" show-button-bar="false" max-date="end_date" class="form-control">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar($event);"><i class="fa fa-calendar"></i></button>
+                  </span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group">
+                  <input type="text" datepicker-popup="yyyy-MM-dd" ng-model="end_date" is-open="endDatePickerOpened" show-button-bar="false" min-date="start_date" class="form-control" placeholder="END DATE">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar($event);"><i class="fa fa-calendar"></i></button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-pane active">
+    <div class="container-fluid card">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <label>CONTENT</label>
+          <div class="form-group">
+            <label class="radio-inline">
+              <input type="radio" name="onoff">ON
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="onoff">OFF
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

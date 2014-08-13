@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-9">
           <div class="media">
-            <img src="//lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="150" class="pull-left img-rounded">
+            <img src="//lh4.ggpht.com/3WooaXkS8KBUFfHnleHW_fCoWTyaY04a-G9U35hvTpxN6_O4djvwhTIwVeSAuy7J5HA=w170-rw" width="150" class="pull-left img-rounded hidden-xs">
             <div class="media-body">
               <dl>
                 <dt class="hide">PLATFORM</dt>
@@ -47,71 +47,73 @@
   <div class="page-header">
     <h4>SETTINGS</h4>
   </div>
-  <table class="table table-bordered">
-    <colgroup>
-      <col width="16.666666%">
-      <col width="16.666666%">
-      <col width="16.666666%">
-      <col width="16.666666%">
-      <col width="16.666666%">
-      <col width="16.666666%">
-    </colgroup>
-    <tbody>
-      <tr>
-        <%
-          var settings = [ {
-            name: "LOCATIONS",
-            description: "",
-            icon: "map-marker",
-            value: Math.floor(Math.random() * 200 + 100)
-          }, {
-            name: "EVENTS",
-            description: "",
-            icon: "gift",
-            value: Math.floor(Math.random() * 200) + " / " + Math.floor(Math.random() * 200 + 100)
-          }, {
-            name: "VERSIONS",
-            description: "LATEST",
-            icon: "slack",
-            value: "1.0a"
-          }, {
-            name: "REWARDS",
-            description: "",
-            icon: "money",
-            value: Math.floor(Math.random() * 200 + 100) + "W"
-          }, {
-            name: "IN APP PURCHASES",
-            description: "",
-            icon: "credit-card",
-            value: Math.floor(Math.random() * 2000000 + 100)
-          }, {
-            name: "COHORTS",
-            description: "",
-            icon: "users",
-            value: Math.floor(Math.random() * 5)
-          } ];
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <colgroup>
+        <col width="16.666666%">
+        <col width="16.666666%">
+        <col width="16.666666%">
+        <col width="16.666666%">
+        <col width="16.666666%">
+        <col width="16.666666%">
+      </colgroup>
+      <tbody>
+        <tr>
+          <%
+            var settings = [ {
+              name: "LOCATIONS",
+              description: "",
+              icon: "map-marker",
+              value: Math.floor(Math.random() * 200 + 100)
+            }, {
+              name: "EVENTS",
+              description: "",
+              icon: "gift",
+              value: Math.floor(Math.random() * 200) + " / " + Math.floor(Math.random() * 200 + 100)
+            }, {
+              name: "VERSIONS",
+              description: "LATEST",
+              icon: "slack",
+              value: "1.0a"
+            }, {
+              name: "REWARDS",
+              description: "",
+              icon: "money",
+              value: Math.floor(Math.random() * 200 + 100) + "W"
+            }, {
+              name: "IN APP PURCHASES",
+              description: "",
+              icon: "credit-card",
+              value: Math.floor(Math.random() * 2000000 + 100)
+            }, {
+              name: "COHORTS",
+              description: "",
+              icon: "users",
+              value: Math.floor(Math.random() * 5)
+            } ];
 
-          for(var i = 0; i < settings.length; i++){
-            var setting = settings[i]
-        %>
-        <td>
-          <a href="/apps/1/locations" class="media" style="display:block;color:#1f2228">
-            <span class="pull-left">
-              <i class="fa fa-<%= setting.icon %> fa-2x fa-border"></i>
-            </span>
-            <span class="media-body">
-              <span style="display:block;line-height:1.2em"><%= setting.name %></span>
-              <span><%= setting.description %></span>
-            </span>
-          </a>
-          <a href="/apps/1/locations" style="font-size:2.5em;line-height:1.3em;font-weight:100;color:#1f2228">
-            <%= setting.value %>
-          </a>
-        </td>
-        <% } %>
-      </tr>
-    </tbody>
-  </table>
+            for(var i = 0; i < settings.length; i++){
+              var setting = settings[i]
+          %>
+          <td>
+            <a href="/apps/1/locations" class="media" style="display:block;color:#1f2228">
+              <span class="pull-left hidden-xs">
+                <i class="fa fa-<%= setting.icon %> fa-2x fa-border"></i>
+              </span>
+              <span class="media-body">
+                <span style="display:block;line-height:1.2em"><%= setting.name %></span>
+                <span class="hidden-xs"><%= setting.description %></span>
+              </span>
+            </a>
+            <a href="/apps/1/locations" style="font-size:2.5em;line-height:1.3em;font-weight:100;color:#1f2228" class="hidden-xs">
+              <%= setting.value %>
+            </a>
+          </td>
+          <% } %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div class="container-fluid card">
   <div class="row page-header">

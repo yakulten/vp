@@ -1,0 +1,76 @@
+<div class="container-fluid card" ng-controller="AnalysisController">
+  <div class="page-header row">
+    <div class="col-md-6">
+      <h3 class="h4">OVERVIEW</h3>
+    </div>
+    <div class="col-md-6 text-right">
+      <form class="row form-horizontal">
+        <div class="col-sm-3 col-sm-offset-3 text-right">
+          <label class="control-label text-muted">report on: </label>
+        </div>
+        <div class="col-sm-3">
+          <select class="form-control">
+            <option>DAU</option>
+            <option>REVENUE</option>
+          </select>
+        </div>
+        <div class="col-sm-3">
+          <select class="form-control">
+            <option>MONTH</option>
+            <option>WEEK</option>
+            <option>DAY</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+  <table class="table table-bordred table-hover" ng-table="tableParams">
+    <tbody>
+      <tr ng-repeat="item in $data">
+        <td data-title="'NAME'" sortable="'temp'">
+          <a href="/apps/1">
+            <img ng-src="{{item.img_url}}" width="30" height="30">
+          </a>
+          &nbsp;
+          <a href="/apps/1">
+            {{item.name}}
+          </a>
+        </td>
+        <td data-title="'GENRE'" sortable="'temp'">
+          {{item.genre_description}}
+        </td>
+        <td data-title="'AVG DAU'" sortable="'temp'">
+          {{item.average_dau | number}}
+        </td>
+        <td data-title="'TOTAL REVENUE'" sortable="'temp'">
+          {{item.total_revenue | currency }}
+        </td>
+        <td data-title="'TOTAL INSTALLS'" sortable="'temp'">
+          {{item.total_installs | number}}
+        </td>
+        <td data-title="'AVG SESSION TIME'" sortable="'temp'">
+          {{item.average_time_spent * 1000 | duration:'mm:ss'}}
+        </td>
+        <td data-title="'REPORT'">
+          <a href="/apps/1/anaytics" class="btn btn-default">
+            <i class="fa fa-search"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container-fluid card" ng-controller="AnalysisController">
+  <div class="page-header row">
+    <div class="col-sm-12">
+      <h4 class="h4">DAU</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-9">
+      <div config="config" class="highchart"></div>
+    </div>
+    <div class="col-sm-9">
+    </div>
+  </div>
+</div>

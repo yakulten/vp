@@ -137,6 +137,12 @@ cite    { font-style: normal; }
   padding-bottom: ((@line-height-computed / 2) - 1);
   margin: (@line-height-computed * 2) 0 @line-height-computed;
   // border-bottom: 1px solid @page-header-border-color;
+  @media (max-width: @screen-sm-min) {
+    > .col-md-6:last-child,
+    > .col-md-3:last-child {
+      display:none;
+    }
+  }
 }
 
 
