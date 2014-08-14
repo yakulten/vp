@@ -2,11 +2,20 @@
   <div class="container-fluid card">
     <div class="page-header row">
       <div class="col-md-3 col-sm-offset-3">
-        <h4>CREATE <a href="#"><i class="fa fa-info-circle"></i></a></h4>
+        <h4>CREATE <a href="#campaignFormHelp" data-toggle="collapse"><i class="fa fa-info-circle"></i></a></h4>
       </div>
       <div class="col-md-3">
         <select ng-model="campaigntype" ng-options="campaigntype as campaigntype.name for campaigntype in campaigntypes" class="form-control">
         </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-offset-3">
+        <div id="campaignFormHelp" class="collapse">
+          <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -14,11 +23,9 @@
     <div class="container-fluid card">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
+          <div class="app-bg" style="background-image:url({{app.img_url}})"></div>
           <div class="form-group important-form-group">
             <label>APP</label>
-          </div>
-          <div class="form-group">
-            <img class="img-rounded app-img" ng-src="{{app.img_url}}" width="150" height="150">
           </div>
           <div class="form-group important-form-group">
             <div class="input-group">
@@ -39,7 +46,7 @@
           </div>
           <div class="form-group">
             <label class="radio-inline">
-              <input type="radio" name="onoff">ON
+              <input type="radio" name="onoff" checked>ON
             </label>
             <label class="radio-inline">
               <input type="radio" name="onoff">OFF
@@ -55,7 +62,7 @@
           <div class="form-group">
             <input type="text" class="form-control" placeholder="CAMPAIGN DESCRIPTION *">
           </div>
-          <div class="form-group">
+          <div class="form-group important-form-group">
             <div class="row">
               <div class="col-sm-6">
                 <div class="input-group">
@@ -81,7 +88,7 @@
   </div>
   <div class="form-pane">
     <div class="container-fluid card">
-      <div class="row">
+      <div class="row content-image-row">
         <div class="col-sm-6 col-sm-offset-3">
           <div class="form-group important-form-group">
             <label>CONTENT</label> <a href="#contentHelp" data-toggle="collapse"><i class="fa fa-info-circle"></i></a>
@@ -94,52 +101,112 @@
               </p>
             </div>
           </div>
-          <div class="form-group important-form-group">
-            <div class="media card">
-              <div class="thumb-btn-wrap pull-left text-center">
-                <button type="button" class="btn btn-default thumb-btn {{orientation}}-thumb-btn" ng-model="bg" style="background-image:url({{app.img_url}})">
-                  <span class="text-muted">
-                    <span class="fa fa-2x fa-image"></span><br/>
-                    {{orientation.toUpperCase()}}
-                  </span>
-                </button>
-              </div>
-              <div class="media-body">
-                <div class="form-group important-form-group">
-                  <label class="radio-inline">
-                    <input type="radio" name="orientation" ng-model="orientation" value="landscape">LANDSCAPE
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="orientation" ng-model="orientation" value="portrait">PORTRAIT
-                  </label>
+          <div class="card-list">
+            <div class="card" ng-repeat="content in contents">
+              <div class="media" >
+                <div class="thumb-btn-wrap pull-left text-center">
+                  <button type="button" class="btn btn-default thumb-btn {{content.orientation}}-thumb-btn" ng-model="bg" style="background-image:url({{content.img_url}})" ng-click="openContentModal(content);">
+                    <span class="text-muted">
+                      <span class="fa fa-2x fa-image"></span><br/>
+                      {{content.orientation.toUpperCase()}}
+                    </span>
+                  </button>
                 </div>
-                <div class="form-group important-form-group">
-                  <input type="text" class="form-control" placeholder="IMAGE NAME">
-                </div>
-                <div class="form-group important-form-group">
-                  <input type="text" class="form-control" placeholder="IMPRESSION WEIGHT">
+                <div class="media-body">
+                  <div class="form-group">
+                    <label class="radio-inline">
+                      <input type="radio" ng-model="content.orientation" value="landscape">LANDSCAPE
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" ng-model="content.orientation" value="portrait">PORTRAIT
+                    </label>
+                    <button class="btn btn-default btn-xs pull-right" ng-hide="contents.length < 2" ng-click="removeContent(content)"><i class="fa fa-times"></i></button>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="IMAGE NAME" ng-model="content.name">
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="IMPRESSION WEIGHT" ng-model="content.weight">
+                      <span class="input-group-addon">%</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-default btn-danger btn-block" ng-click="addContent()">ADD</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="checkbox-inline">
-              <input type="checkbox" >
-              NO DISPLAY TODAY OPTION
-            </label>
-          </div>
+        </div>
+        <div class="col-sm-3 content-chart-wrap">
+          <highchart config="contentChartConfig" class="content-chart"></highchart>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
           <div class="form-group">
             <select class="form-control">
+              <option>NO ACTION</option>
               <option>OPEN URL</option>
             </select>
           </div>
           <div class="form-group">
             <label class="checkbox-inline">
               <input type="checkbox" >
+              SHOW NO DISPLAY TODAY
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-inline">
+              <input type="checkbox" checked>
               CLOSE AFTER CLICK
             </label>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-pane">
+    <div class="container-fluid card">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <label>IMPRESSION</label>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6" ng-repeat="placement in placements">
+                <label class="checkbox-inline" tooltip="{{placement.description}}">
+                  <input type="checkbox" ng-model="placement.isActive"> {{placement.name}}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group important-form-group">
+            <select class="form-control">
+              <option>APPLY TO ALL USERS</option>
+            </select>
+          </div>
+          <div class="form-group important-form-group">
+            <select class="form-control">
+              <option>APPLY TO ALL CONDITIONS</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-inline">
+              <input type="checkbox"> APPLY TO TEST DEVICES
+            </label>
+            <p class="help-block">
+              ※ If you select option 'show in test device', this campaign is placed following 24 hours
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <button class="btn btn-primary btn-block">CREATE</button>
       </div>
     </div>
   </div>

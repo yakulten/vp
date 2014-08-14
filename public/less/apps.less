@@ -1,0 +1,62 @@
+.app {
+  position:relative;
+  overflow:hidden;
+  padding-top:200px;
+  .app-content {
+    position:relative;
+    background-color:@body-bg;
+    &:before {
+      content:"";
+      position:absolute;
+      top:-50px;
+      left:0;
+      right:0;
+      height:50px;
+      #gradient > .vertical(@start-color: rgba(255,255,255,0); @end-color: @body-bg);
+    }
+    .h3 {
+      margin-top:0
+    }
+  }
+  .app-btn-group {
+    margin-top:21px;
+  }
+}
+.app-bg {
+  position:absolute;
+  top:-@padding-base-vertical;
+  right:-@padding-base-vertical;
+  left:-@padding-base-vertical;
+  height:200px;
+  background-size:cover;
+  background-position:50% 0%;
+  background-repeat:no-repeat;
+  opacity:0.2;
+  -webkit-filter:blur(4px);
+  -ms-filter:blur(4px);
+  -moz-filter:blur(4px);
+  filter:blur(4px);
+}
+
+form.app {
+  .app-bg {
+  }
+  .app-content {
+    .card {
+      margin-bottom:15px;
+    }
+  }
+  .bg-btn {
+    position:absolute;
+    display:block;
+    top:75px;
+    left:50%;
+    margin:0 auto;
+    margin-left:-43px;
+  }
+  .thumb-btn {
+    width:150px;
+    height:150px;
+    background-size:cover;
+  }
+}

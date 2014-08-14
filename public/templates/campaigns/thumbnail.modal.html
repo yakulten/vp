@@ -1,0 +1,22 @@
+<div class="campaign">
+  <div class="modal-body">
+    <div class="device card" ng-class="content.orientation">
+      <img ng-src="{{content.img_url}}">
+    </div>
+    <div class="form-group">
+      <label class="radio-inline">
+        <input type="radio" ng-model="content.orientation" value="landscape">LANDSCAPE
+      </label>
+      <label class="radio-inline">
+        <input type="radio" ng-model="content.orientation" value="portrait">PORTRAIT
+      </label>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="CONTENT IMAGE URL" ng-model="content.img_url">
+    </div>
+  </div>
+  <div class="modal-footer text-right">
+    <button class="btn btn-default" ng-click="$dismiss();">CANCEL</button>
+    <button class="btn btn-primary" ng-click="$close(content)">OK</button>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+@transition: all .33s cubic-bezier(.694, .0482, .335, 1);
+@transitionWidth: width .33s cubic-bezier(.694, .0482, .335, 1);
+
+body {
+  overflow-x:hidden;
+}
+
+.card {
+  display:block;
+  border-bottom:1px solid @table-border-color;
+}
+
+.vp-app {
+  .vp-side {
+    position: fixed;
+    overflow: auto;
+    top:0;
+    bottom:0;
+    width: 37px;
+    background-color: lighten(@navbar-inverse-bg, 10%);
+    z-index:1;
+    .transition(@transitionWidth);
+
+    .vp-menu-btn {
+      position:absolute;
+      left:8px;
+      margin-top:14px;
+      opacity: 1;
+      .transition(@transition);
+    }
+
+    .vp-menus {
+      position: relative;
+      left: -252px;
+      width: 252px;
+      opacity: 0;
+      .transition(@transition);
+      .h1 {
+        display:block;
+        color:#a4aab2;
+        padding:18px 15px;
+        margin:0;
+        font-size:15px;
+        line-height:17px;
+        height:51px;
+        border-bottom:1px solid #333;
+        background-color:@navbar-inverse-bg;
+      }
+    }
+
+    &:hover, &.in {
+      width: 252px;
+      .vp-menu-btn {
+        opacity: 0;
+      }
+      .vp-menus {
+        left: 0px;
+        opacity: 1;
+      }
+    }
+    @media (max-width: @screen-sm-min) {
+      width:0;
+      .vp-menu-btn {
+        display:none;
+      }
+    }
+    @media (min-width: @screen-xl-desktop) {
+      width: 252px;
+      .vp-menu-btn {
+        opacity: 0;
+      }
+      .vp-menus {
+        left: 0px;
+        opacity: 1;
+      }
+    }
+  }
+  .vp-body {
+    position:relative;
+    left:0;
+    min-height:853px;
+    border-top: 1px solid @brand-primary;
+    margin-top: 51px;
+    margin-left: 37px;
+    background-color:@body-bg;
+    z-index:2;
+    .transition(@transition);
+
+    .navbar-fixed-top, .navbar-fixed-bottom {
+      left:0px;
+      margin-left: 37px;
+      .transition(@transition);
+    }
+
+    @media (max-width: @screen-sm-min) {
+      margin-left:0;
+      .navbar-fixed-top, .navbar-fixed-bottom {
+        margin-left:0;
+      }
+    }
+    @media (min-width: @screen-xl-desktop) {
+      left:0;
+      margin-left: 252px;
+      .navbar-fixed-top, .navbar-fixed-bottom {
+        margin-left: 252px;
+      }
+    }
+  }
+
+  @media (max-width: @screen-xl-desktop) {
+    .vp-side:hover + .vp-body, .vp-side.in + .vp-body {
+    // .vp-side + .vp-body {
+      left:215px;
+      margin-left: 37px;
+      .navbar-fixed-top, .navbar-fixed-bottom {
+        left:215px;
+        margin-left: 37px;
+      }
+    }
+  }
+}

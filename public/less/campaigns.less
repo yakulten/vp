@@ -1,0 +1,146 @@
+form.campaign {
+
+  .card {
+    margin-bottom:15px;
+  }
+
+  .form-pane {
+    .card {
+      margin-bottom: 10px;
+    }
+
+    &.active {
+      .thumb-btn {
+        &.landscape-thumb-btn {
+          width:160px;
+          height:103px;
+        }
+        &.portrait-thumb-btn {
+          width:68px;
+          height:103px;
+        }
+      }
+    }
+  }
+
+
+  .thumb-btn {
+    background-size:cover;
+    .transition(width .32s);
+    &.portrait-thumb-btn {
+      width:68px;
+      height:83px;
+    }
+    &.landscape-thumb-btn {
+      width:160px;
+      height:83px;
+    }
+  }
+
+  .thumb-btn-wrap {
+    width:162px;
+  }
+
+  .content-image-row {
+    position:relative;
+    .content-chart-wrap {
+      position:static;
+      .content-chart {
+        position:absolute;
+        top:50%;
+        height:119px;
+        width:23%;
+        margin-top:-60px;
+      }
+    }
+  }
+
+  .card-list {
+    > .card:last-child {
+      margin-bottom:0;
+      border-bottom:0;
+    }
+  }
+
+  .app-bg {
+    height:100%;
+    background-size:25%;
+    background-position:10px 50%;
+  }
+}
+
+.form-pane {
+  .opacity(0.75);
+
+  .form-group {
+    overflow:hidden;
+    height:0;
+    margin-bottom:0;
+    .transition(all 0.32s);
+
+    label {
+      margin-bottom: 2px;
+    }
+
+    &.important-form-group {
+      overflow:visible;
+      height:auto;
+      margin-bottom:5px;
+    }
+  }
+
+  .card-list {
+    > .card {
+      display:inline-block;
+      border-bottom:0;
+      .media-body {
+        display:none;
+      }
+    }
+  }
+
+  &.active {
+    .opacity(1);
+    .form-group {
+      overflow:visible;
+      height:auto;
+      margin-bottom:15px;
+    }
+
+    .card-list {
+      > .card {
+        display:block;
+        border-bottom:10px;
+        .media-body {
+          display:block;
+        }
+      }
+    }
+  }
+}
+
+.campaign {
+  .device {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size:contain;
+    text-align: center;
+    margin-bottom: @padding-base-vertical * 2;
+    &.landscape {
+      padding:16px 73px 20px 80px;
+      background-image:url(/public/images/iphone-landscape.png);
+      img {
+        width:300px;
+        height:200px;
+      }
+    }
+    &.portrait {
+      padding:73px 20px 80px 16px;
+      background-image:url(/public/images/iphone-portrait.png);
+      img {
+        width:200px;
+        height:300px;
+      }
+    }
+  }
+}

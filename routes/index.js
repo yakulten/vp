@@ -16,7 +16,6 @@ router.get(/.*/, function(req, res){
     breadcrumbs[1] = "METAL SLUG DEFENCE"
   }
 
-  console.log(pathArr.join("/"))
   res.render(pathArr.join("/"), { breadcrumbs: breadcrumbs });
 });
 
