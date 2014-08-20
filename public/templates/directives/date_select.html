@@ -1,0 +1,34 @@
+<select ng-hide="isDateRangeShown" ng-model="date" ng-options="option as option.label for option in options" class="form-control">
+  <option value="">SELECT DATE</option>
+</select>
+<div class="row ng-date-range" ng-show="isDateRangeShown">
+  <div class="col-sm-5" style="padding-right:8px;">
+    <div class="ng-date-picker-start">
+      <input
+        datepicker-popup="yyyy-MM-dd"
+        is-open="startDatePickerOpened"
+        show-button-bar="false"
+        max-date="rangeOption.value.end"
+        ng-model="rangeOption.value.start"
+        ng-click="open($event);"
+        ng-focus="open($event);"
+        type="text"  class="form-control" placeholder="START">
+    </div>
+  </div>
+  <div class="col-sm-7" style="padding-left:12px;">
+    <div class="input-group ng-date-picker-end">
+      <input
+        datepicker-popup="yyyy-MM-dd"
+        is-open="endDatePickerOpened"
+        show-button-bar="false"
+        min-date="rangeOption.value.start"
+        ng-model="rangeOption.value.end"
+        ng-click="open($event);"
+        ng-focus="open($event);"
+        type="text"  class="form-control" placeholder="END">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="close($event);"><i class="fa fa-check"></i></button>
+      </span>
+    </div>
+  </div>
+</div>

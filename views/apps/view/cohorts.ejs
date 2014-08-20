@@ -1,78 +1,49 @@
-<%
-  var config = {
-    options: {
-      chart: {
-        type: "bar",
-        height: 298,
-        marginBottom: 44
-      },
-      plotOptions: {
-        bar: {
-          colorByPoint: true
-        }
-      },
-      legend: {
-      }
-    },
-    xAxis: {
-      categories: [ "lobby1", "lobby2", "lobby3", "lobby4", "lobby5" ],
-      opposite: true
-    },
-    series: [{
-      name: "LOCATIONS",
-      data: [
-        _.random(500, 1000),
-        _.random(500, 1000),
-        _.random(500, 1000),
-        _.random(500, 1000),
-        _.random(500, 1000)
-      ]
-    }]
-  };
-%>
-
 <%= include _app_nav.ejs %>
 
-<div class="container-fluid" ng-controller="ChartsController" data-config="<%= JSON.stringify(config) %>">
+<div class="container-fluid" ng-controller="CohortsController">
   <div class="page-header">
-    <h3 class="h4">LOCATIONS <a href="#locationsInfo" data-toggle="collapse"><i class="fa fa-info-circle"></i></a></h3>
-    <div>
+    <h3 class="h4">COHORTS <a href="#titleInfo" data-toggle="collapse"><i class="fa fa-info-circle"></i></a></h3>
+    <div id="titleInfo" class="collapse in">
       <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
       <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
       <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-12">
       <table class="table table-hover" ng-table>
         <tbody>
           <tr ng-repeat="item in [1,2,3,4,5]">
             <td data-title="'LOCATION'" sortable="'temp'">
-              lobby{{$index + 1}}
+              cohort{{$index + 1}}
             </td>
             <td data-title="'DESCRIPTION'" sortable="'temp'">
-              first location in game
+              cohort description
             </td>
             <td data-title="'EXTERNAL CAMPAIGNS'" sortable="'temp'">
-              Internal Cross Promotion
+              <i class="fa fa-check"></i> Cross Promotion
             </td>
-            <td data-title="'MANAGEMENT'" width="100">
-              <button class="btn btn-default">ON</button>
+            <td data-title="'AMOUNT'" sortable="'temp'" class="text-right">
+              {{ ($index + 1) * 100 }}
+            </td>
+            <td data-title="'MANAGEMENT'">
+              <button class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
+              <button class="btn btn-default"><i class="fa fa-copy"></i></button>
+              <button class="btn btn-default"><i class="fa fa-trash-o"></i></button>
             </td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="4">
-              <button class="btn btn-default" ui-sref="locations.create">CREATE</button>
+            <td colspan="5">
+              <button class="btn btn-default" ng-click="openCreateModal()">CREATE</button>
             </td>
           </tr>
         </tfoot>
       </table>
     </div>
-    <div class="col-sm-3">
-      <highchart config="config"></highchart>
-    </div>
+    <!-- <div class="col-sm-3">
+    </div> -->
   </div>
 </div>
 <script>
@@ -82,7 +53,7 @@
       .state("locations.create", {
         onEnter: function($stateParams, $state, $modal, $resource){
           $modal.open({
-            templateUrl: "/public/templates/locations/create.modal.html"
+            templateUrl: "/public/templates/locations/create.html"
           });
         }
       })

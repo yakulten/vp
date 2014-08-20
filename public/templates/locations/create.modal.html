@@ -1,0 +1,12 @@
+<div class="modal-header modal-header-inverse">
+  <button type="button" class="close" ng-click="$dismiss();">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+  </button>
+  <h4>CREATE LOCATION</h4>
+</div>
+<div class="modal-body" ng-include="'/public/templates/locations/create.html'">
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" ng-click="$dismiss();">CLOSE</button>
+  <button type="submit" class="btn btn-primary">SUBMIT</button>
+</div>

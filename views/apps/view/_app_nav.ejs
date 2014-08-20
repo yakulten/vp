@@ -1,0 +1,63 @@
+<% var pageName = _.last(breadcrumbs) %>
+<div class="container-fluid card">
+  <div class="row">
+    <div class="col-sm-9">
+      <ul class="nav nav-tabs nav-justified" style="margin-bottom:-1px">
+        <%
+          var settings = [ {
+            name: "LOCATIONS",
+            href: "locations",
+            description: "",
+            icon: "map-marker",
+            value: Math.floor(Math.random() * 200 + 100)
+          }, {
+            name: "EVENTS",
+            href: "events",
+            description: "",
+            icon: "gift",
+            value: Math.floor(Math.random() * 200) + " / " + Math.floor(Math.random() * 200 + 100)
+          }, {
+            name: "VERSIONS",
+            href: "versions",
+            description: "LATEST",
+            icon: "slack",
+            value: "1.0a"
+          }, {
+            name: "REWARDS",
+            href: "rewards",
+            description: "",
+            icon: "money",
+            value: Math.floor(Math.random() * 200 + 100) + "W"
+          }, {
+            name: "IN APP PURCHASES",
+            href: "iap",
+            description: "",
+            icon: "credit-card",
+            value: Math.floor(Math.random() * 2000000 + 100)
+          }, {
+            name: "COHORTS",
+            href: "cohorts",
+            description: "",
+            icon: "users",
+            value: Math.floor(Math.random() * 5)
+          } ];
+
+          for(var i = 0; i < settings.length; i++){
+            var setting = settings[i]
+        %>
+        <li class="<%= pageName.toUpperCase() == setting.name ? 'active' : '' %>">
+          <a href="/apps/1/<%= setting.href %>" class="text-muted">
+            <i class="fa fa-<%= setting.icon %> fa-border"></i><%= setting.name %>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <div class="col-md-3 text-right">
+      <div style="margin-top:5px;">
+        <button class="btn btn-default">DEVELOPER CONSOLE</button>
+        <button class="btn btn-default">EDIT</button>
+      </div>
+    </div>
+  </div>
+</div>

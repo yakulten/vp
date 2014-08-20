@@ -1,0 +1,13 @@
+<div controller="DummyController" style="position:relative;">
+  <div class="modal-header modal-header-inverse">
+    <button type="button" class="close" ng-click="$dismiss();">
+      <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+    </button>
+    <h4>CREATE COHORT <a href="#" ng-click="isCollapsed = !isCollapsed" ng-init="isCollapsed = true"><i class="fa fa-info-circle"></i></a></h4>
+  </div>
+  <div ng-include="'/public/templates/cohorts/create.html'">
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary btn-block">CREATE</button>
+  </div>
+</div>

@@ -1,0 +1,286 @@
+<form rule="form" name="form" class="form-horizontal cohort" style="margin-top:17px;" ng-controller="CohortFormController">
+  <div class="container-fluid">
+    <div collapse="isCollapsed">
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">* COHORT</label>
+      <div class="col-sm-10">
+        <input ng-model="cohort.name" type="text" name="cohort_name" class="form-control" placeholder="COHORT NAME" required>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <fieldset class="container-fluid" ng-controller="CohortFieldsetController" item-models="[ cohort.user_level, cohort.user_friends, cohort.purchase_count, cohort.purchase_amount ]">
+    <highchart class="cohort-chart-pie" config="config" ng-show="hasData"></highchart>
+    <div class="form-group">
+      <legend class="col-sm-2 control-label h4" ng-click="toggle.user = !toggle.user"><i class="fa fa-caret-down"></i> USERS</legend>
+      <div class="col-sm-10">
+      </div>
+    </div>
+    <div collapse="toggle.user">
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.user_level">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-2">
+              <input ng-model="item.min" name="user_level_min" type="number" class="form-control" placeholder="MINIMUM">
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.max" name="user_level_max" type="number" class="form-control" placeholder="MAXIMUM">
+            </div>
+          </div>
+          <p ng-if="item.min > item.max && item.max !== null" class="help-block">SHOULD BE GREATER THAN MINIMUM OR EQUAL</p>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.user_friends">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-2">
+              <input ng-model="item.min" type="number" min="0" integer class="form-control" placeholder="MINIMUM">
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.max" type="number" min="{{item.min}}" integer class="form-control" placeholder="MAXIMUM">
+            </div>
+          </div>
+          <p ng-if="item.min > item.max && item.max !== null" class="help-block">SHOULD BE GREATER THAN MINIMUM OR EQUAL</p>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.purchase_count">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4">
+              <span date-select="item.date_range"></span>
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.min" type="number" min="0" integer class="form-control" placeholder="MINIMUM">
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.max" type="number" min="{{item.min}}" integer class="form-control" placeholder="MAXIMUM">
+            </div>
+          </div>
+          <p ng-if="item.min > item.max && item.max !== null" class="help-block">SHOULD BE GREATER THAN MINIMUM OR EQUAL</p>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.purchase_amount">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4">
+              <span date-select="temp1"></span>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group">
+                <input ng-model="item.min" type="number" min="0" integer class="form-control" placeholder="MINIMUM">
+                <span class="input-group-addon fa fa-dollar"></span>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group">
+                <input ng-model="item.max" type="number" min="{{item.min}}" integer class="form-control" placeholder="MAXIMUM">
+                <span class="input-group-addon fa fa-dollar"></span>
+              </div>
+            </div>
+          </div>
+          <p ng-if="item.min > item.max && item.max !== null" class="help-block">SHOULD BE GREATER THAN MINIMUM OR EQUAL</p>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <hr>
+  <fieldset class="container-fluid" ng-controller="CohortFieldsetController" item-models="[ cohort.session_count, cohort.session_time, cohort.frequency, cohort.installation_date ]">
+    <highchart class="cohort-chart-pie" config="config" ng-show="hasData"></highchart>
+    <div class="form-group">
+      <legend class="col-sm-2 control-label h4" ng-click="toggle.sessions = !toggle.sessions"><i class="fa fa-caret-down"></i> SESSIONS</legend>
+      <div class="col-sm-10">
+      </div>
+    </div>
+    <div collapse="toggle.sessions">
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.session_count">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4">
+              <span date-select="item.date_range"></span>
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.min" type="number" min="0" integer class="form-control" placeholder="MINIMUM">
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.max" type="number" min="{{item.min}}" integer class="form-control" placeholder="MAXIMUM">
+            </div>
+          </div>
+          <p ng-if="item.min > item.max && item.max !== null" class="help-block">SHOULD BE GREATER THAN MINIMUM OR EQUAL</p>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.session_time">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4">
+              <span date-select="item.date_range"></span>
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.min" type="number" min="0" integer class="form-control" placeholder="MINIMUM" tooltip="minutes">
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.max" type="number" min="{{item.min}}" integer class="form-control" placeholder="MAXIMUM" tooltip="minutes">
+            </div>
+          </div>
+          <p ng-if="item.min > item.max && item.max !== null" class="help-block">SHOULD BE GREATER THAN MINIMUM OR EQUAL</p>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.frequency">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4">
+              <span date-select="item.date_range"></span>
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.min" type="number" min="0" integer class="form-control" placeholder="MINIMUM" tooltip="session per day">
+            </div>
+            <div class="col-sm-2">
+              <input ng-model="item.max" type="number" min="{{item.min}}" integer class="form-control" placeholder="MAXIMUM" tooltip="session per day">
+            </div>
+          </div>
+          <p ng-if="item.min > item.max && item.max !== null" class="help-block">SHOULD BE GREATER THAN MINIMUM OR EQUAL</p>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.installation_date">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4">
+              <span date-select="item.date_range"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <hr>
+  <fieldset class="container-fluid">
+    <div class="form-group">
+      <legend class="col-sm-2 control-label h4" ng-click="toggle.events = !toggle.events"><i class="fa fa-caret-down"></i> EVENTS</legend>
+      <div class="col-sm-10">
+      </div>
+    </div>
+    <div collapse="toggle.events" class="dynamic-list">
+      <div class="form-group" ng-repeat="event in cohort.events" ng-controller="CohortItemController" item-model="event">
+        <label class="col-sm-2 control-label">EVENT {{ $index + 1 }}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4">
+              <span date-select="item.date_range"></span>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-control">
+                <option value="">SELECT EVENT</option>
+              </select>
+            </div>
+            <div class="col-sm-4 row">
+              <div class="col-sm-5">
+                <input ng-model="item.min" type="number" min="0" integer class="form-control" placeholder="MINIMUM">
+              </div>
+              <div class="col-sm-5">
+                <input ng-model="item.max" type="number" min="{{item.min}}" integer class="form-control" placeholder="MAXIMUM">
+              </div>
+              <div class="col-sm-2 text-right">
+                <button ng-click="cohort.events.splice($index, 1)" ng-if="!$last" type="button" class="btn btn-default"><i class="fa fa-times"></i></button>
+                <button ng-click="cohort.events.push({})" ng-show="$last" type="button" class="btn btn-default"><i class="fa fa-plus"></i></button>
+              </div>
+            </div>
+          </div>
+          <p ng-if="item.min > item.max && item.max !== null" class="help-block">SHOULD BE GREATER THAN MINIMUM OR EQUAL</p>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <hr>
+  <fieldset class="container-fluid">
+    <div class="form-group">
+      <legend class="col-sm-2 control-label h4" ng-click="toggle.info = !toggle.info"><i class="fa fa-caret-down"></i> INFORMATION</legend>
+      <div class="col-sm-10">
+      </div>
+    </div>
+    <div collapse="toggle.info">
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.game_version">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-12">
+              <select ui-select2 ng-model="item.values" data-placeholder="SELECT" class="form-control" multiple>
+                <option ng-repeat="option in item.options" value="{{option.value}}">{{option.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.os_version">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-12">
+              <select ui-select2 ng-model="item.values" data-placeholder="SELECT" class="form-control" multiple>
+                <option ng-repeat="option in item.options" value="{{option.value}}">{{option.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.device">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-12">
+              <select ui-select2 ng-model="item.values" data-placeholder="SELECT" class="form-control" multiple>
+                <option ng-repeat="option in item.options" value="{{option.value}}">{{option.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.country">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-12">
+              <select ui-select2 ng-model="item.values" data-placeholder="SELECT" class="form-control" multiple>
+                <option ng-repeat="option in item.options" value="{{option.value}}">{{option.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.gender">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-12">
+              <select ui-select2 ng-model="item.values" data-placeholder="SELECT" class="form-control" multiple>
+                <option ng-repeat="option in item.options" value="{{option.value}}">{{option.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" ng-controller="CohortItemController" item-model="cohort.age">
+        <label class="col-sm-2 control-label">{{item.name.toUpperCase()}}</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-12">
+              <select ui-select2 ng-model="item.values" data-placeholder="SELECT" class="form-control" multiple>
+                <option ng-repeat="option in item.options" value="{{option.value}}">{{option.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
